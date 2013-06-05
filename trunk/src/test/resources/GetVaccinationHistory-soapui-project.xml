@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="GetVaccinationHistory" resourceRoot="" soapui-version="4.0.1.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GetVaccinationHistoryResponderBinding" type="wsdl" bindingName="{urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21}GetVaccinationHistoryResponderBinding" soapVersion="1_1" anonymous="optional" definition="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?wsdl"><con:part><con:url>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GetVaccinationHistoryInteraction" targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21" xmlns:itr="urn:riv:itintegration:registry:1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tjsi="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:1" xmlns:tjsr="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21">
+      <xs:import namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" schemaLocation="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=GetVaccinationHistoryResponder_1.0.xsd"/>
+      <xs:import namespace="urn:riv:itintegration:registry:1" schemaLocation="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=../../core_components/itintegration_registry_1.0.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVaccinationHistoryRequest">
+    <wsdl:part element="itr:LogicalAddress" name="LogicalAddress">
+      <wsdl:documentation>The HSA-id of the source system or the HSA-id of Inera AB (for national aggregations service) or HSA-id of an agency (for local/regional aggregation service)</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part element="tjsr:GetVaccinationHistory" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetVaccinationHistoryResponse">
+    <wsdl:part element="tjsr:GetVaccinationHistoryResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GetVaccinationHistoryResponderInterface">
+    <wsdl:operation name="GetVaccinationHistory">
+      <wsdl:input message="tns:GetVaccinationHistoryRequest"></wsdl:input>
+      <wsdl:output message="tns:GetVaccinationHistoryResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetVaccinationHistoryResponderBinding" type="tns:GetVaccinationHistoryResponderInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetVaccinationHistory">
+      <soap:operation soapAction="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2:GetVaccinationHistory" style="document"/>
+      <wsdl:input>
+        <soap:header message="tns:GetVaccinationHistoryRequest" part="LogicalAddress" use="literal"></soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetVaccinationHistoryResponderService">
+    <wsdl:port binding="tns:GetVaccinationHistoryResponderBinding" name="GetVaccinationHistoryResponderPort">
+      <soap:address location="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21"/>
+    </wsdl:port>
+  </wsdl:service>
+  <xs:annotation>
+    <xs:documentation>Tjänsteinteraktionens namn: GetVaccinationHistoryInteraction
+			 Beskrivning: 
+			   Get vaccination history for a patient
+			 Revisioner: 
+			 Tjänstedomän: clinicalprocess:activityprescription:actoutcome
+			 Tjänsteinteraktionstyp: Fråga-Svar
+			 WS-profil: RIVTABP21
+			 Förvaltas av: Sveriges Kommuner och Landsting</xs:documentation>
+  </xs:annotation>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=GetVaccinationHistoryResponder_1.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" version="1.0" xmlns:core="urn:riv:clinicalprocess:activityprescription:actoutcome:1" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:1" schemaLocation="https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=../../core_components/clinicalprocess_activityprescription_actoutcome_1.0.xsd"/>
+  <xs:element name="GetVaccinationHistory" type="tns:GetVaccinationHistoryType"/>
+  <xs:element name="GetVaccinationHistoryResponse" type="tns:GetVaccinationHistoryResponseType"/>
+  <xs:complexType name="GetVaccinationHistoryType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="careUnitHSAid" type="core:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="patientId" type="core:PatientIdType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="timePeriod" type="core:DatePeriodType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="sourceSystemHSAid" type="core:HSAidType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="careContactId" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetVaccinationHistoryResponseType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vaccinationMedicalRecord" type="core:VaccinationMedicalRecordType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=../../core_components/clinicalprocess_activityprescription_actoutcome_1.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:1" version="1.0" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="VaccinationMedicalRecordType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="vaccinationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="vaccinationMedicalRecordBody" type="tns:VaccinationMedicalRecordBodyType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VaccinationMedicalRecordBodyType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="registrationRecord" type="tns:RegistrationRecordType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="administrationRecord" type="tns:AdministrationRecordType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistrationRecordType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="date" type="tns:DateType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="patientPostalCode" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="vaccinationUnstructuredNote" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="riskCategory" type="tns:CVType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="patientAdverseEffect" type="tns:CVType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AdministrationRecordType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="0" name="vaccinationProgramName" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="prescriberOrg" type="tns:OrgUnitType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="prescriberPerson" type="tns:ActorType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="performerOrg" type="tns:OrgUnitType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="performer" type="tns:ActorType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="anatomicalSite" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="route" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="dosage" type="tns:DosageType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="isDoseComplete" type="xs:boolean"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="doseOrdinalNumber" type="xs:integer"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="numberOfPrescribedDoses" type="xs:integer"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="sourceDescription" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="commentPrescription" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="commentAdministration" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="patientAdverseEffect" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="vaccineType" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="vaccineName" type="tns:CVType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="vaccineBatchId" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="vaccineManufacturer" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vaccineTargetDisease" type="tns:CVType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HSAidType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <!--YYYYMMDD-->
+  <xs:simpleType name="DateType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DatePeriodType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="start" type="tns:DateType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="end" type="tns:DateType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="TimeStampType">
+    <xs:annotation>
+      <xs:documentation>A quantity specifying a point on the axis of natural time.
+        A point in time is most often represented as a calendar
+        expression.
+
+        The time has the format YYYYMMDDhhmmss</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(0[0-9]|1[0-9]|2[0123])([0-5])([0-9])([0-5])([0-9])"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PatientIdType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="id" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="type" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PQType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="value" type="xs:double"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="unit" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="authorTime" type="tns:TimeStampType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorRoleCode" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorOtherRole" type="tns:AuthorOtherRoleType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorName" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorOrgUnitHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="authorOrgUnitName" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="authorOrgUnitAddress" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="careUnitHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="careGiverHSAid" type="tns:HSAidType"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthorOtherRoleType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="authorOtherRoleCode" type="xs:string"/>
+      <xs:element name="authorOtherRoleCodeOID" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LegalAuthenticatorType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="signatureTime" type="tns:TimeStampType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="legalAuthenticatorHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="legalAuthenticatorName" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PatientSummaryHeaderType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="documentId" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="sourceSystemHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="documentTitle" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="documentTime" type="tns:TimeStampType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="patientId" type="tns:PatientIdType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="author" type="tns:AuthorType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="legalAuthenticator" type="tns:LegalAuthenticatorType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="approvedForPatient" type="xs:boolean"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="careContactId" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="nullified" type="xs:boolean"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="nullifiedReason" type="xs:boolean"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrgUnitType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="0" name="orgUnitHSAid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="orgUnitName" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="orgUnitTelephone" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="orgUnitEmail" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="orgUnitAddress" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="orgUnitLocation" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActorType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="0" name="hsaid" type="tns:HSAidType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="name" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CVType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="1" name="code" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="codeSystem" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="codeSystemName" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="codeSystemVersion" type="xs:string"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="displayName" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DosageType">
+    <xs:sequence>
+      <xs:element maxOccurs="1" minOccurs="0" name="quantity" type="tns:PQType"/>
+      <xs:element maxOccurs="1" minOccurs="1" name="displayName" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21?xsd=../../core_components/itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="urn:riv:itintegration:registry:1" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Beskrivning: 	Grundl��ggande informationsobjekt f��r dom��nen itintegration:registry (adressering av tj��nster)
+			
+			Revisionshistorik: 2011-06-27 Mats Ekhammar, Callista Enterprise AB
+				Added ServiceContractType
+			
+			Datum:			2011-05-04
+			Beskrivning:	Initial version
+			F��rfattare:		marcus.krantz@callistaenterprise.se</xs:documentation>
+  </xs:annotation>
+  <xs:element name="LogicalAddress" type="LogicalAddressType"/>
+  <xs:element name="ServiceContract" type="ServiceContractType"/>
+  <xs:simpleType name="LogicalAddressType">
+    <xs:annotation>
+      <xs:documentation>Defines the type for logical address according to national reference architecture.
+				Superseeds wsa:To as type for logical address header in RIVTA 2.1.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="ServiceContractType">
+    <xs:annotation>
+      <xs:documentation>Type which describes a service contract. Used in interaction GetSupportedServiceContracts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ServiceContractNamespace" type="xs:anyURI"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2:GetVaccinationHistory" name="GetVaccinationHistory" bindingOperationName="GetVaccinationHistory" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://tptest.callistasoftware.org:20000/vp/GetVaccinationHistory/1/rivtabp21</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" xmlns:urn2="urn:riv:clinicalprocess:activityprescription:actoutcome:1">
+   <soapenv:Header>
+      <urn:LogicalAddress>agg-vaccination</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:GetVaccinationHistory>
+
+         <urn1:patientId>
+            <urn2:id>198611062384</urn2:id>
+
+         </urn1:patientId>
+      </urn1:GetVaccinationHistory>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2:GetVaccinationHistory"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
