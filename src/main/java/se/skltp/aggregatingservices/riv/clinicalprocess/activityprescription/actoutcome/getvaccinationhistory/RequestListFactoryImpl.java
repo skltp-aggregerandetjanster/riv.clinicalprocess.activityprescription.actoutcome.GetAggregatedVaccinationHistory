@@ -93,7 +93,12 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
             GetVaccinationHistoryType request = new GetVaccinationHistoryType();
             request.setPatientId(originalRequest.getPatientId());
-            request.getCareUnitHSAid().addAll(careUnitList);
+
+            // Don't set by PDL-enhet (logicalAddress)
+            if(originalRequest.getCareUnitHSAid() != null && originalRequest.getCareUnitHSAid().size() > 0){
+                request.getCareUnitHSAid().addAll(originalRequest.getCareUnitHSAid()); 
+            }
+
             request.setTimePeriod(originalRequest.getTimePeriod());
 
             Object[] reqArr = new Object[] {sourceSystem, request};
