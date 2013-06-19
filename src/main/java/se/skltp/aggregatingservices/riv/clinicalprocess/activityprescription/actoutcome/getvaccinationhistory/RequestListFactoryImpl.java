@@ -31,15 +31,12 @@ public class RequestListFactoryImpl implements RequestListFactory {
      * Följande villkor måste vara sanna för att en svarspost från EI skall tas med i svaret:
      * 
      * 1. req.timePeriod.start <= ei-engagement.mostRecentContent <= req.timePeriod.end
-     * 2. req.careUnitHSAid.size == 0 or req.careUnitHSAid.contains(ei-engagement.logicalAddress)
-     * 
-     * Svarsposter från EI som passerat filtreringen grupperas på fältet sourceSystem samt postens fält logicalAddress (= PDL-enhet) samlas i listan careUnitId per varje sourceSystem
-     * 
+
      * Ett anrop görs per funnet sourceSystem med följande värden i anropet:
      * 
      * 1. logicalAddress = sourceSystem (systemadressering)
      * 2. subjectOfCareId = orginal-request.subjectOfCareId
-     * 3. careUnitId = listan av PDL-enheter som returnerats från EI för aktuellt source system)
+     * 3. careUnitId = orginal-request.careUnitId
      * 4. fromDate = orginal-request.fromDate
      * 5. toDate = orginal-request.toDate
      */
@@ -55,25 +52,21 @@ public class RequestListFactoryImpl implements RequestListFactory {
             reqTo   = parseTs(originalRequest.getTimePeriod().getEnd());	
         }
 
-        List<String> reqCareUnitList = originalRequest.getCareUnitHSAid();
-
         FindContentResponseType eiResp = (FindContentResponseType)src;
         List<EngagementType> inEngagements = eiResp.getEngagement();
 
-        System.err.println("Got " +  inEngagements.size() + " hits in the engagement index");
         log.info("Got {} hits in the engagement index", inEngagements.size());
 
-        Map<String, Set<String>> sourceSystem_pdlUnitList_map = new HashMap<String, Set<String>>();
+        Set<String> sourceSystems = new HashSet<String>();
 
         for (EngagementType inEng : inEngagements) {
 
             // Filter
-            if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent()) &&
-                    isPartOf(reqCareUnitList, inEng.getLogicalAddress())) {
+            if (isBetween(reqFrom, reqTo, inEng.getMostRecentContent())) {
 
-                System.err.println("Add SS: " + inEng.getSourceSystem() + " for PDL unit: " + inEng.getLogicalAddress());
+                log.info("Add SS: {}", inEng.getSourceSystem());
                 // Add pdlUnit to source system
-                addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
+                sourceSystems.add(inEng.getSourceSystem());
             }
         }
 
@@ -82,14 +75,9 @@ public class RequestListFactoryImpl implements RequestListFactory {
         // each payload built up as an object-array according to the JAX-WS signature for the method in the service interface
         List<Object[]> reqList = new ArrayList<Object[]>();
 
-        for (Entry<String, Set<String>> entry : sourceSystem_pdlUnitList_map.entrySet()) {
+        for (String sourceSystem : sourceSystems) {
 
-            String sourceSystem = entry.getKey();
-            List<String> careUnitList = new ArrayList<String>(entry.getValue().size());
-            careUnitList.addAll(entry.getValue());
-
-            System.err.println("Calling source system using logical address " + sourceSystem + " for subject of care id: " + originalRequest.getPatientId().getId());
-            if (log.isInfoEnabled()) log.info("Calling source system using logical address {} for subject of care id {}", sourceSystem, originalRequest.getPatientId().getId());
+            log.info("Calling source system using logical address {} for subject of care id {}", sourceSystem, originalRequest.getPatientId().getId());
 
             GetVaccinationHistoryType request = new GetVaccinationHistoryType();
             request.setPatientId(originalRequest.getPatientId());
@@ -125,7 +113,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
     protected boolean isBetween(Date from, Date to, String tsStr) {
         try {
-            System.err.println("Is " + tsStr + " between " + from + " and " + to);
+            log.debug("Is {} between {} and {}", new Object[]{ tsStr, from, to});
             Date ts = dtf.parse(tsStr);
             if (from != null && from.after(ts)) return false;
             if (to != null && to.before(ts)) return false;
@@ -135,21 +123,4 @@ public class RequestListFactoryImpl implements RequestListFactory {
         }
     }
 
-    protected boolean isPartOf(List<String> careUnitIdList, String careUnit) {
-
-        System.err.println("Check presence of " + careUnit + " in " + careUnitIdList);
-
-        if (careUnitIdList == null || careUnitIdList.size() == 0) return true;
-
-        return careUnitIdList.contains(careUnit);
-    }
-
-    protected void addPdlUnitToSourceSystem(Map<String, Set<String>> sourceSystem_pdlUnitList_map, String sourceSystem, String pdlUnitId) {
-        Set<String> careUnitList = sourceSystem_pdlUnitList_map.get(sourceSystem);
-        if (careUnitList == null) {
-            careUnitList = new HashSet<String>();
-            sourceSystem_pdlUnitList_map.put(sourceSystem, careUnitList);
-        } 
-        careUnitList.add(pdlUnitId);
-    }
 }
