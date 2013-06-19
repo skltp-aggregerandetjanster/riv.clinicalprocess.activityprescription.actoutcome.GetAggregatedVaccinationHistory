@@ -11,7 +11,7 @@
 
     <groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
     <artifactId>GetAggregatedVaccinationHistory</artifactId>
-    <version>1.0.0-RC3-SNAPSHOT</version>
+    <version>1.0.0-RC3</version>
     <packaging>mule</packaging>
     <name>GetAggregatedVaccinationHistory</name>
 
@@ -31,9 +31,9 @@
     </pluginRepositories>
       
     <scm>
-        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</connection>
-        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory//trunk</developerConnection>
-        <url>https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</url>
+        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/tags/GetAggregatedVaccinationHistory-1.0.0-RC3</connection>
+        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/tags/GetAggregatedVaccinationHistory-1.0.0-RC3</developerConnection>
+        <url>https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/tags/GetAggregatedVaccinationHistory-1.0.0-RC3</url>
     </scm>
     
 	<dependencies>	
