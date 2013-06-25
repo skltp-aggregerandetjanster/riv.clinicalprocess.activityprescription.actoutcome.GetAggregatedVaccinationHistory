@@ -43,7 +43,7 @@ public class VaccinationHistoryTestProducerDb extends TestProducerDb {
         header.setPatientId(patientId);
         header.setApprovedForPatient(true);
         header.setSourceSystemHSAid(logicalAddress);
-        header.setCareContactId(businessObjectId);
+        header.setDocumentId(businessObjectId);
         header.setDocumentTime(time);
         
         // TODO: Set stuff
