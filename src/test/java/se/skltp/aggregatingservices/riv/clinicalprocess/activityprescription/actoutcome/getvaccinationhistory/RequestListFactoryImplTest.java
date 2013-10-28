@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.DatePeriodType;
-import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientIdType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -159,7 +159,7 @@ public class RequestListFactoryImplTest {
     
     private GetVaccinationHistoryType createGetVaccinationHistory(String id, List<String> careUnits){
         GetVaccinationHistoryType getCareContact = new GetVaccinationHistoryType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getCareContact.setPatientId(patientId);
         getCareContact.getCareUnitHSAid().addAll(careUnits);

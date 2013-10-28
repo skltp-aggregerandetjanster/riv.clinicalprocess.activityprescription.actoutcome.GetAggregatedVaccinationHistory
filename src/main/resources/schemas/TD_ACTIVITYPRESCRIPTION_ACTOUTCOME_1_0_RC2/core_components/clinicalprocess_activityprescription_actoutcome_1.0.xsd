@@ -36,6 +36,13 @@
 
   <xs:complexType name='RegistrationRecordType'>
     <xs:sequence>
+      <xs:element name='careGiverOrg' type='tns:OrgUnitType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='careGiverContact' type='tns:ActorType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='sourceSystemName' type='xs:string' minOccurs='1' maxOccurs='1' />
+      <xs:element name='sourceSystemProductName' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='sourceSystemProductVersion' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='sourceSystemContact' type='tns:ActorType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='careUnitSmiId' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='date' type='tns:DateType' minOccurs='1' maxOccurs='1' />
       <xs:element name='patientPostalCode' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccinationUnstructuredNote' type='xs:string' minOccurs='0' maxOccurs='1' />
@@ -52,8 +59,8 @@
       <xs:element name='prescriberPerson' type='tns:ActorType' minOccurs='0' maxOccurs='1' />
       <xs:element name='performerOrg' type='tns:OrgUnitType' minOccurs='0' maxOccurs='1' />
       <xs:element name='performer' type='tns:ActorType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='anatomicalSite' type='tns:CVType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='route' type='tns:CVType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='anatomicalSite' type='tns:CVType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='route' type='tns:CVType' minOccurs='0' maxOccurs='1' />
       <xs:element name='dosage' type='tns:DosageType' minOccurs='0' maxOccurs='1' />
       <xs:element name='isDoseComplete' type='xs:boolean' minOccurs='0' maxOccurs='1' />
       <xs:element name='doseOrdinalNumber' type='xs:integer' minOccurs='0' maxOccurs='1' />
@@ -62,16 +69,37 @@
       <xs:element name='commentPrescription' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='commentAdministration' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='patientAdverseEffect' type='tns:CVType' minOccurs='0' maxOccurs='unbounded' />
-      <xs:element name='vaccineType' type='tns:CVType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='vaccineName' type='tns:CVType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='vaccineType' type='tns:CVType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='vaccineName' type='tns:CVType' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccineBatchId' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccineManufacturer' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccineTargetDisease' type='tns:CVType' minOccurs='0' maxOccurs='unbounded' />
+      <xs:element name='vaccineUniqueReference' type='tns:IIType' minOccurs='0' maxOccurs='1' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name='HealthcareProfessionalType'>
+    <xs:sequence>
+      <xs:element name='authorTime' type='tns:TimeStampType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalHSAId' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalName' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalRoleCode' type='tns:CVType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalOrgUnit' type='tns:OrgUnitType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalCareUnitHSAId' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='healthcareProfessionalCareGiverHSAId' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
 
+  <xs:complexType name='IIType'>
+    <xs:sequence>
+      <xs:element name='root' type='xs:string' minOccurs='1' maxOccurs='1' />
+      <xs:element name='extension' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:simpleType name="HSAidType">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -88,8 +116,8 @@
 
   <xs:complexType name='DatePeriodType'>
     <xs:sequence>
-      <xs:element name='start' type='tns:DateType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='end' type='tns:DateType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='start' type='tns:DateType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='end' type='tns:DateType' minOccurs='0' maxOccurs='1' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
@@ -111,7 +139,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:complexType name='PatientIdType'>
+  <xs:complexType name='PersonIdType'>
     <xs:sequence>
       <xs:element name='id' type='xs:string' minOccurs='1' maxOccurs='1' />
       <xs:element name='type' type='xs:string' minOccurs='1' maxOccurs='1' />
@@ -127,33 +155,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name='AuthorType'>
-    <xs:sequence>
-      <xs:element name='authorTime' type='tns:TimeStampType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='authorHSAid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='authorRoleCode' type='xs:string' minOccurs='0' maxOccurs='1' />
-      <xs:element name='authorOtherRole' type='tns:AuthorOtherRoleType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='authorName' type='xs:string' minOccurs='0' maxOccurs='1' />
-      <xs:element name='authorOrgUnitHSAid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='authorOrgUnitName' type='xs:string' minOccurs='1' maxOccurs='1' />
-      <xs:element name='authorOrgUnitAddress' type='xs:string' minOccurs='0' maxOccurs='1' />
-      <xs:element name='careUnitHSAid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='careGiverHSAid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="AuthorOtherRoleType">
-    <xs:annotation>
-      <xs:documentation/>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="authorOtherRoleCode" type="xs:string"/>
-      <xs:element name="authorOtherRoleCodeOID" type="xs:string"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name='LegalAuthenticatorType'>
     <xs:sequence>
       <xs:element name='signatureTime' type='tns:TimeStampType' minOccurs='1' maxOccurs='1' />
@@ -166,11 +167,11 @@
   <xs:complexType name='PatientSummaryHeaderType'>
     <xs:sequence>
       <xs:element name='documentId' type='xs:string' minOccurs='1' maxOccurs='1' />
-      <xs:element name='sourceSystemHSAid' type='tns:HSAidType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='documentTitle' type='xs:string' minOccurs='1' maxOccurs='1' />
-      <xs:element name='documentTime' type='tns:TimeStampType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='patientId' type='tns:PatientIdType' minOccurs='1' maxOccurs='1' />
-      <xs:element name='author' type='tns:AuthorType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='sourceSystemHSAId' type='tns:HSAidType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='documentTitle' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='documentTime' type='tns:TimeStampType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='patientId' type='tns:PersonIdType' minOccurs='1' maxOccurs='1' />
+      <xs:element name='accountableHealthcareProfessional' type='tns:HealthcareProfessionalType' minOccurs='1' maxOccurs='1' />
       <xs:element name='legalAuthenticator' type='tns:LegalAuthenticatorType' minOccurs='0' maxOccurs='1' />
       <xs:element name='approvedForPatient' type='xs:boolean' minOccurs='1' maxOccurs='1' />
       <xs:element name='careContactId' type='xs:string' minOccurs='0' maxOccurs='1' />
@@ -183,8 +184,8 @@
   <xs:complexType name='OrgUnitType'>
     <xs:sequence>
       <xs:element name='orgUnitHSAid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='orgUnitName' type='xs:string' minOccurs='1' maxOccurs='1' />
-      <xs:element name='orgUnitTelephone' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='orgUnitName' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='orgUnitTelecom' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='orgUnitEmail' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='orgUnitAddress' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='orgUnitLocation' type='xs:string' minOccurs='0' maxOccurs='1' />
@@ -192,21 +193,26 @@
     </xs:sequence>
   </xs:complexType>
 
+
   <xs:complexType name='ActorType'>
     <xs:sequence>
       <xs:element name='hsaid' type='tns:HSAidType' minOccurs='0' maxOccurs='1' />
-      <xs:element name='name' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='personName' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='personEmail' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='personTelecom' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='personAddress' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name='CVType'>
     <xs:sequence>
-      <xs:element name='code' type='xs:string' minOccurs='1' maxOccurs='1' />
-      <xs:element name='codeSystem' type='xs:string' minOccurs='1' maxOccurs='1' />
+      <xs:element name='code' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='codeSystem' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='codeSystemName' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='codeSystemVersion' type='xs:string' minOccurs='0' maxOccurs='1' />
-      <xs:element name='displayName' type='xs:string' minOccurs='1' maxOccurs='1' />
+      <xs:element name='displayName' type='xs:string' minOccurs='0' maxOccurs='1' />
+      <xs:element name='originalText' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>

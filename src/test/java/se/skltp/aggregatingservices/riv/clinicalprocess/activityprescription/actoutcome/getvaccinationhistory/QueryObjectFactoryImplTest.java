@@ -14,7 +14,7 @@ import org.w3c.dom.Document;
 
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.ObjectFactory;
-import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientIdType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
 import se.skltp.agp.service.api.QueryObject;
 
 public class QueryObjectFactoryImplTest {
@@ -35,7 +35,7 @@ public class QueryObjectFactoryImplTest {
     @Test
     public void createQueryObject() throws Exception{
         GetVaccinationHistoryType getVaccinationHistory = new GetVaccinationHistoryType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getVaccinationHistory.setPatientId(patientId);
         
@@ -52,7 +52,7 @@ public class QueryObjectFactoryImplTest {
     @Test
     public void createQueryObject_with_source_system() throws Exception{
         GetVaccinationHistoryType getVaccinationHistory = new GetVaccinationHistoryType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(RR_ID);
         getVaccinationHistory.setPatientId(patientId);
         getVaccinationHistory.setSourceSystemHSAid(SOURCE_SYSTEM);

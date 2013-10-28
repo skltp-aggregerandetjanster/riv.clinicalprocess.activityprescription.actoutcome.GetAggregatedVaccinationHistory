@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistory.v1.rivtabp21.GetVaccinationHistoryResponderInterface;
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryType;
-import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientIdType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
 import se.skltp.aggregatingservices.VaccinationHistoryMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractTestConsumer;
@@ -42,7 +42,7 @@ public class VaccinationHistoryTestConsumer extends AbstractTestConsumer<GetVacc
         log.debug("Calling GetAggregatedVaccinationHistory-soap-service with id = {}", id);
 
         GetVaccinationHistoryType request = new GetVaccinationHistoryType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(id);
         request.setPatientId(patientId);
 

@@ -152,7 +152,7 @@ public class VaccinationHistoryIntegrationTest extends AbstractAggregateIntegrat
             VaccinationMedicalRecordType responseElement = response.getVaccinationMedicalRecord().get(i);
             assertEquals(registeredResidentId, responseElement.getVaccinationMedicalRecordHeader().getPatientId().getId());
             assertEquals(testData[i].getExpectedBusinessObjectId(), responseElement.getVaccinationMedicalRecordHeader().getDocumentId());
-            assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getVaccinationMedicalRecordHeader().getAuthor().getCareUnitHSAid());
+            assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getVaccinationMedicalRecordHeader().getAccountableHealthcareProfessional().getHealthcareProfessionalCareUnitHSAId());
         }
 
 

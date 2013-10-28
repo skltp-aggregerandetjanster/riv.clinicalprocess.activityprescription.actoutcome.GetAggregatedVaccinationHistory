@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
-import se.riv.clinicalprocess.activityprescription.actoutcome.v1.AuthorType;
-import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientIdType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.HealthcareProfessionalType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.LegalAuthenticatorType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.OrgUnitType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientSummaryHeaderType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.RegistrationRecordType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordBodyType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordType;
@@ -37,12 +39,15 @@ public class VaccinationHistoryTestProducerDb extends TestProducerDb {
 
         VaccinationMedicalRecordType response = new VaccinationMedicalRecordType();
         PatientSummaryHeaderType header = new PatientSummaryHeaderType();
-        PatientIdType patientId = new PatientIdType();
+        PersonIdType patientId = new PersonIdType();
         patientId.setId(registeredResidentId);
         patientId.setType("1.2.752.129.2.1.3.1");
         header.setPatientId(patientId);
         header.setApprovedForPatient(true);
-        header.setSourceSystemHSAid(logicalAddress);
+        LegalAuthenticatorType legalAuthenticator = new LegalAuthenticatorType();
+        legalAuthenticator.setSignatureTime("20130707070707");
+        header.setLegalAuthenticator(legalAuthenticator);
+        header.setSourceSystemHSAId(logicalAddress);
         header.setDocumentId(businessObjectId);
         header.setDocumentTime(time);
         
@@ -55,16 +60,18 @@ public class VaccinationHistoryTestProducerDb extends TestProducerDb {
         
         body.setRegistrationRecord(regRecord);
         
-        AuthorType author = new AuthorType();
-        author.setCareUnitHSAid(logicalAddress); // TODO ???
+        HealthcareProfessionalType author = new HealthcareProfessionalType();
+        author.setHealthcareProfessionalCareUnitHSAId(logicalAddress); // TODO ???
+        OrgUnitType orgUnit = new OrgUnitType();
         if(TestProducerDb.TEST_LOGICAL_ADDRESS_1.equals(logicalAddress)){
-            author.setAuthorOrgUnitName("Vårdcentralen Kusten, Kärna"); // TODO ???
+            orgUnit.setOrgUnitName("Vårdcentralen Kusten, Kärna"); // TODO ???
         } else if(TestProducerDb.TEST_LOGICAL_ADDRESS_2.equals(logicalAddress)){
-            author.setAuthorOrgUnitName("Vårdcentralen Molnet");
+        	orgUnit.setOrgUnitName("Vårdcentralen Molnet");
         } else {
-            author.setAuthorOrgUnitName("Vårdcentralen Stacken");
+        	orgUnit.setOrgUnitName("Vårdcentralen Stacken");
         }
-        header.setAuthor(author);
+        author.setHealthcareProfessionalOrgUnit(orgUnit);
+        header.setAccountableHealthcareProfessional(author);
         response.setVaccinationMedicalRecordHeader(header);
         response.setVaccinationMedicalRecordBody(body);
         return response;
