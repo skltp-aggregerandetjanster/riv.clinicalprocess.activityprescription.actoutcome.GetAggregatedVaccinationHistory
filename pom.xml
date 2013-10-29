@@ -11,7 +11,7 @@
 
     <groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
     <artifactId>GetAggregatedVaccinationHistory</artifactId>
-    <version>1.0.0-RC5-SNAPSHOT</version>
+    <version>1.0.0-RC4-SNAPSHOT</version>
     <packaging>mule</packaging>
     <name>GetAggregatedVaccinationHistory</name>
 
