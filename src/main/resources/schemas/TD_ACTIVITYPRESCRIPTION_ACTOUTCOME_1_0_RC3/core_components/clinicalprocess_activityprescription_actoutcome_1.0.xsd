@@ -74,7 +74,7 @@
       <xs:element name='vaccineBatchId' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccineManufacturer' type='xs:string' minOccurs='0' maxOccurs='1' />
       <xs:element name='vaccineTargetDisease' type='tns:CVType' minOccurs='0' maxOccurs='unbounded' />
-      <xs:element name='vaccineUniqueReference' type='tns:IIType' minOccurs='0' maxOccurs='1' />
+      <xs:element name='vaccinationUniqueReference' type='tns:IIType' minOccurs='0' maxOccurs='1' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
