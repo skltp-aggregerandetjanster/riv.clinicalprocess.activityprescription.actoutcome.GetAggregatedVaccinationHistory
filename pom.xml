@@ -11,12 +11,12 @@
 
     <groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
     <artifactId>GetAggregatedVaccinationHistory</artifactId>
-    <version>1.0.0-RC6-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>mule</packaging>
     <name>GetAggregatedVaccinationHistory</name>
 
     <properties>
-        <skltp.agp.version>1.0.0-RC5</skltp.agp.version>
+        <skltp.agp.version>1.0.0</skltp.agp.version>
 
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
@@ -271,7 +271,7 @@
               <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdloption>
-                  <wsdl>${schema.path}/TD_ACTIVITYPRESCRIPTION_ACTOUTCOME_1_0_RC3/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>${schema.path}/Clinicalprocess_activityprescription_actoutcome_1.0.0/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_1.0_RIVTABP21.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-p</extraarg>
                     <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>

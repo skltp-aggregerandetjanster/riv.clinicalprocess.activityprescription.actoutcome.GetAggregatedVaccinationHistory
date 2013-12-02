@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.AdministrationRecordType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.HealthcareProfessionalType;
+import se.riv.clinicalprocess.activityprescription.actoutcome.v1.IIType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.LegalAuthenticatorType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.OrgUnitType;
 import se.riv.clinicalprocess.activityprescription.actoutcome.v1.PatientSummaryHeaderType;
@@ -55,8 +57,15 @@ public class VaccinationHistoryTestProducerDb extends TestProducerDb {
 
         VaccinationMedicalRecordBodyType body = new VaccinationMedicalRecordBodyType();
         
+        AdministrationRecordType adminRecord = new AdministrationRecordType();
+        IIType vaccUniqueRef = new IIType();
+        vaccUniqueRef.setExtension("extension");
+        vaccUniqueRef.setRoot("root");
+        adminRecord.setVaccinationUniqueReference(vaccUniqueRef);
+        
+        body.getAdministrationRecord().add(adminRecord);
+        
         RegistrationRecordType regRecord = new RegistrationRecordType();
-        // TODO: Set stuff
         
         body.setRegistrationRecord(regRecord);
         
