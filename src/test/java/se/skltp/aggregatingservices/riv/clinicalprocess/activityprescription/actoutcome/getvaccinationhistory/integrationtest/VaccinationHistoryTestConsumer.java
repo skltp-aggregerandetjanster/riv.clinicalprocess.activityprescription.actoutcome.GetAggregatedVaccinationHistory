@@ -25,7 +25,7 @@ public class VaccinationHistoryTestConsumer extends AbstractTestConsumer<GetVacc
         String serviceAddress = VaccinationHistoryMuleServer.getAddress("SERVICE_INBOUND_URL");
         String personnummer = TEST_RR_ID_ONE_HIT;
 
-        VaccinationHistoryTestConsumer consumer = new VaccinationHistoryTestConsumer(serviceAddress, SAMPLE_ORIGINAL_CONSUMER_HSAID);
+        VaccinationHistoryTestConsumer consumer = new VaccinationHistoryTestConsumer(serviceAddress, SAMPLE_SENDER_ID ,SAMPLE_ORIGINAL_CONSUMER_HSAID);
         Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
         long now = System.currentTimeMillis();
@@ -33,9 +33,9 @@ public class VaccinationHistoryTestConsumer extends AbstractTestConsumer<GetVacc
         log.info("Returned #vaccination record= " + responseHolder.value.getVaccinationMedicalRecord().size() + " in " + (System.currentTimeMillis() - now) + " ms.");	
     }
 
-    public VaccinationHistoryTestConsumer(String serviceAddress, String originalConsumerHsaId) {
+    public VaccinationHistoryTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId) {
         // Setup a web service proxy for communication using HTTPS with Mutual Authentication
-        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, originalConsumerHsaId); 
+        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId); 
     }
 
     public void callService(String logicalAddress, String id, Holder<ProcessingStatusType> processingStatusHolder, Holder<GetVaccinationHistoryResponseType> responseHolder) {
