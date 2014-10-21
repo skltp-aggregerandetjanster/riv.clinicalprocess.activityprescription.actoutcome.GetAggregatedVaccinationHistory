@@ -4,14 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.soitoolkit.commons.poms</groupId>
-        <artifactId>soitoolkit-default-parent</artifactId>
-        <version>0.6.1</version>
+  			<groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
+				<artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
+				<version>1.1.2-SNAPSHOT</version>
     </parent>
 
-    <groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
     <artifactId>GetAggregatedVaccinationHistory</artifactId>
-    <version>1.1.2-SNAPSHOT</version>
     <packaging>mule</packaging>
     <name>GetAggregatedVaccinationHistory</name>
 
@@ -22,21 +20,15 @@
         <schema.path>${basedir}/src/main/resources/schemas</schema.path>
         <cxf.version>2.5.1</cxf.version>
     </properties>
-    
+
     <pluginRepositories>
       <pluginRepository>
         <id>eviwarePluginRepository</id>
         <url>http://www.eviware.com/repository/maven2/</url>
       </pluginRepository>
     </pluginRepositories>
-      
-    <scm>
-        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</connection>
-        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory//trunk</developerConnection>
-        <url>https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</url>
-    </scm>
-    
-	<dependencies>	
+
+	<dependencies>
 
         <dependency>
           <groupId>se.skltp.agp</groupId>
@@ -51,7 +43,7 @@
         </dependency>
 
 
-<!-- 
+<!--
         <dependency>
           <groupId>org.soitoolkit.commons.components</groupId>
                 <artifactId>soitoolkit-studio-components</artifactId>
@@ -104,7 +96,7 @@
 			<version>1.8.5</version>
 		</dependency>
 
-  </dependencies> 
+  </dependencies>
 
     <build>
         <resources>
@@ -117,7 +109,7 @@
             </resource>
         </resources>
 
-		<plugins>   
+		<plugins>
             <plugin>
                 <!-- Add mule-nature to the eclipse-.project-file -->
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -211,11 +203,11 @@
                     </exclusions>
                 </configuration>
             </plugin>
-            
+
             <plugin>
               <artifactId>maven-jar-plugin</artifactId>
               <configuration>
-                <!-- 
+                <!--
                  if no classifier is declared, then a mvn install results in a file in
                  the local repo: ic2-1.0.0-SNAPSHOT.mule
                  which is a jar-file - only strangely named and with a bad extension
@@ -233,7 +225,7 @@
                 </execution>
               </executions>
             </plugin>
-            
+
 			<plugin>
 			    <artifactId>maven-resources-plugin</artifactId>
 			    <executions>
@@ -332,8 +324,8 @@
                 </plugins>
             </build>
         </profile>
-        
-        
+
+
         <profile>
           <id>acceptance-test</id>
           <build>
