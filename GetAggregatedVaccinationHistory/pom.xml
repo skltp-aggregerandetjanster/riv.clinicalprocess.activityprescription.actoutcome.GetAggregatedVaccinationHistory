@@ -1,12 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
+[soi-toolkit.gen.version=0.6.2-SNAPSHOT]
+[soi-toolkit.gen.type=services]
+[soi-toolkit.gen.createDate=2014-11-17T11:06:22.127+01:00]
+[soi-toolkit.gen.artifactId=GetAggregatedVaccinationHistory]
+-->
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-  			<groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
-				<artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
-				<version>1.1.2-SNAPSHOT</version>
+        <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
+        <artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>GetAggregatedVaccinationHistory</artifactId>
@@ -17,24 +27,22 @@
         <skltp.agp.version>1.2.1</skltp.agp.version>
 
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
-        <schema.path>${basedir}/src/main/resources/schemas</schema.path>
         <cxf.version>2.5.1</cxf.version>
+
     </properties>
 
-    <pluginRepositories>
-      <pluginRepository>
-        <id>eviwarePluginRepository</id>
-        <url>http://www.eviware.com/repository/maven2/</url>
-      </pluginRepository>
-    </pluginRepositories>
-
 	<dependencies>
-
         <dependency>
-          <groupId>se.skltp.agp</groupId>
-          <artifactId>agp-core</artifactId>
-          <version>${skltp.agp.version}</version>
+		    <groupId>se.skltp.agp</groupId>
+		    <artifactId>agp-core</artifactId>
+		    <version>${skltp.agp.version}</version>
         </dependency>
+
+				<dependency>
+					<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
+					<artifactId>GetAggregatedVaccinationHistory-schemas</artifactId>
+					<version>${project.version}</version>
+				</dependency>
 
         <dependency>
           <groupId>org.soitoolkit.commons.components</groupId>
@@ -42,29 +50,13 @@
             <version>${soitoolkit.version}</version>
         </dependency>
 
+		<dependency>
+			<groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
+			<artifactId>soitoolkit-mule-3.3.1-dependencies</artifactId>
+			<version>${soitoolkit.version}</version>
+			<type>pom</type>
+		</dependency>
 
-<!--
-        <dependency>
-          <groupId>org.soitoolkit.commons.components</groupId>
-                <artifactId>soitoolkit-studio-components</artifactId>
-                <version>${soitoolkit.version}</version>
-        </dependency>
-
-        TODO: Mule EE dependency
-        <dependency>
-            <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-            <artifactId>soitoolkit-mule-ee-3.3.1-dependencies</artifactId>
-            <version>${soitoolkit.version}</version>
-            <type>pom</type>
-        </dependency>
- -->
-
-        <dependency>
-          <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-          <artifactId>soitoolkit-mule-3.3.1-dependencies</artifactId>
-          <version>${soitoolkit.version}</version>
-          <type>pom</type>
-        </dependency>
         <!-- TEST DEPENDENCIES -->
 
         <dependency>
@@ -96,7 +88,7 @@
 			<version>1.8.5</version>
 		</dependency>
 
-  </dependencies>
+	</dependencies>
 
     <build>
         <resources>
@@ -132,7 +124,7 @@
                     <inclusions>
                         <inclusion>
                             <groupId>org.mule.modules</groupId>
-                            <artifactId>mule-module-rest</artifactId>
+                            <artifactId>mule-module-rest-router</artifactId>
                         </inclusion>
                         <inclusion>
                             <groupId>org.mule.modules</groupId>
@@ -225,68 +217,31 @@
                 </execution>
               </executions>
             </plugin>
-
-			<plugin>
-			    <artifactId>maven-resources-plugin</artifactId>
-			    <executions>
-			        <execution>
-			            <id>copy-log4j-resource</id>
-			            <phase>prepare-package</phase>
-			            <goals>
-			                <goal>copy-resources</goal>
-			            </goals>
-			            <configuration>
-			                <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-			                <resources>
-			                    <resource>
-			                        <directory>src/environment</directory>
-			                        <includes>
-			                            <include>log4j.xml</include>
-			                            <include>log4j.dtd</include>
-			                        </includes>
-			                    </resource>
-			                </resources>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>
-
-      <plugin>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-codegen-plugin</artifactId>
-        <version>${cxf.version}</version>
-        <executions>
-          <execution>
-            <id>generate-sources</id>
-            <phase>generate-sources</phase>
-            <configuration>
-              <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-              <wsdlOptions>
-                <wsdloption>
-                  <wsdl>${schema.path}/Clinicalprocess_activityprescription_actoutcome_1.0.0/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_1.0_RIVTABP21.wsdl</wsdl>
-                  <extraargs>
-                    <extraarg>-p</extraarg>
-                    <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:1=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryinitiator.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistory.v1.rivtabp21</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:1=se.riv.clinicalprocess.activityprescription.actoutcome.v1</extraarg>
-                  </extraargs>
-                </wsdloption>
-              </wsdlOptions>
-            </configuration>
-            <goals>
-              <goal>wsdl2java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+		    <plugin>
+			  <artifactId>maven-resources-plugin</artifactId>
+			  <executions>
+			    <execution>
+			    <id>copy-log4j-resource</id>
+			    <phase>prepare-package</phase>
+				<goals>
+			      <goal>copy-resources</goal>
+			    </goals>
+				<configuration>
+				<!--<outputDirectory>target/classes</outputDirectory> -->
+				<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+				<resources>
+				  <resource>
+				    <directory>src/environment</directory>
+					  <includes>
+					    <include>log4j.xml</include>
+					    <include>log4j.dtd</include>
+					  </includes>
+				  </resource>
+				</resources>
+			  </configuration>
+		    </execution>
+		  </executions>
+		</plugin>
 
       </plugins>
 
@@ -309,7 +264,7 @@
                                     <goal>java</goal>
                                 </goals>
                                 <configuration>
-                                    <mainClass>se.skltp.agp.MuleServer</mainClass>
+                                    <mainClass>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.GetAggregatedVaccinationHistoryMuleServer</mainClass>
                                     <classpathScope>test</classpathScope>
                                 </configuration>
                             </execution>
@@ -323,27 +278,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-
-
-        <profile>
-          <id>acceptance-test</id>
-          <build>
-            <defaultGoal>test</defaultGoal>
-            <plugins>
-              <plugin>
-                <groupId>eviware</groupId>
-                <artifactId>maven-soapui-plugin</artifactId>
-                <version>4.5.1</version>
-                <configuration>
-                  <projectFile>src/test/resources/GetVaccinationHistory-soapui-project.xml</projectFile>
-                  <host>${hostname}</host>
-                  <outputFolder>target</outputFolder>
-                  <settingsFile>${settingsFile}</settingsFile>
-                </configuration>
-              </plugin>
-            </plugins>
-          </build>
         </profile>
     </profiles>
 </project>

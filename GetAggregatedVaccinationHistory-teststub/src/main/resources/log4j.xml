@@ -6,7 +6,7 @@
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d %-5p %-30c - %m%n" />
+			<param name="ConversionPattern" value="%d %-5p %-30C - %m%n" />
 		</layout>
 	</appender>
 
@@ -15,7 +15,7 @@
         <param name="MaxFileSize" value="1000KB" />
         <param name="MaxBackupIndex" value="3" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d %-5p %-30c - %m%n" />
+            <param name="ConversionPattern" value="%d %-5p %-30C - %m%n" />
         </layout> 
     </appender>
 
@@ -64,7 +64,7 @@
 		<level value="INFO" />
 	</logger>
 	
-	<logger name="se.skl.tp.aggregatingservices.clinicalprocess.logistics.getaggregatedcarecontact">
+	<logger name="se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory">
 		<level value="INFO" />
 	</logger>
 
@@ -77,6 +77,8 @@
 		<priority value="WARN" />
 		
 		<appender-ref ref="CONSOLE"/>
+		<!--
 		<appender-ref ref="ROLLINGFILE"/>
+		-->
 	</root>
 </log4j:configuration>

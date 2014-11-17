@@ -6,9 +6,18 @@
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d %-5p %-30C - %m%n" />
+			<param name="ConversionPattern" value="%d %-5p [%t] %-30c - %m%n" />
 		</layout>
 	</appender>
+
+    <appender name="ROLLINGFILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="${mule.home}/logs/mule-app-GetAggregatedVaccinationHistory.log" />
+        <param name="MaxFileSize" value="1000KB" />
+        <param name="MaxBackupIndex" value="3" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %-30c - %m%n" />
+        </layout> 
+    </appender>
 
 	<!--
 		Loglevels: {OFF, FATAL, ERROR, WARN, INFO, DEBUG, TRACE, ALL} See:
@@ -62,30 +71,19 @@
 	<logger name="org.soitoolkit.commons">
 		<level value="INFO" />
 	</logger>
-
-    <logger name="se.skltp.agp">
-        <level value="INFO" />
-    </logger>
-    
-    <logger name="se.skltp.aggregatingservices">
-        <level value="DEBUG" />
-    </logger>
+	
+	<logger name="se.skltp.agp">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory">
+		<level value="INFO" />
+	</logger>
 
     <!-- Message logging using soi-toolkit LogTransformer class -->
 	<logger name="org.soitoolkit.commons.mule.messageLogger">
 		<level value="INFO" />
 	</logger>
-
-	<logger name="com.mulesoft.mule.cache">
-		<level value="DEBUG" />
-	</logger>
-
-	 <!-- Monitoring logs to separate log file, additivity makes sure not logged twice -->
-    <logger name="se.skltp.agp.monitoring" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-
 	
 	<root>
 		<priority value="WARN" />
