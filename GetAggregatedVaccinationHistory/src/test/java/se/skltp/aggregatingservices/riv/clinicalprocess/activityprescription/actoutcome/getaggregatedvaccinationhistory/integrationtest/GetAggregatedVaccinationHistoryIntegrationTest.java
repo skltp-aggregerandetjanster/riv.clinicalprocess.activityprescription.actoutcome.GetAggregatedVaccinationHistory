@@ -1,6 +1,5 @@
 package se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.integrationtest;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
 import static se.skltp.agp.riv.interoperability.headers.v1.CausingAgentEnum.VIRTUALIZATION_PLATFORM;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_ORIGINAL_CONSUMER_HSAID;
@@ -27,6 +26,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
+import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryResponseType;
+import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.GetAggregatedVaccinationHistoryMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
@@ -161,25 +162,19 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
 
 		// Setup and perform the call to the web service
 		GetAggregatedVaccinationHistoryTestConsumer consumer = new GetAggregatedVaccinationHistoryTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId ,originalConsumerHsaId);
-		//Holder<GetRequestActivitiesResponseType> responseHolder = new Holder<GetRequestActivitiesResponseType>();
+		Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();
 		Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
-    	//consumer.callService(LOGICAL_ADDRESS, registeredResidentId, processingStatusHolder, responseHolder);
+    	consumer.callService(LOGICAL_ADDRESS, registeredResidentId, processingStatusHolder, responseHolder);
 
     	// Verify the response size and content
-    	//GetRequestActivitiesResponseType response = responseHolder.value;
+    	GetVaccinationHistoryResponseType response = responseHolder.value;
     	int expextedResponseSize = testData.length;
 
-
-		//assertEquals(expextedResponseSize, response.getRequestActivity().size());
-		/**
+		assertEquals(expextedResponseSize, response.getVaccinationMedicalRecord().size());
 		for (int i = 0; i < testData.length; i++) {
-			//RequestActivityType responseElement = response.getRequestActivity().get(i);
-			assertEquals(registeredResidentId, responseElement.getSubjectOfCareId());		
-
-			assertEquals(testData[i].getExpectedBusinessObjectId(), responseElement.getSenderRequestId());
-			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getCareUnit());		
+			VaccinationMedicalRecordType responseElement = response.getVaccinationMedicalRecord().get(i);
+			assertEquals(registeredResidentId, responseElement.getVaccinationMedicalRecordHeader().getPatientId().getId());
 		}
-		**/
 
     	// Verify the size of the processing status and return it for further analysis
 		ProcessingStatusType statusList = processingStatusHolder.value;
