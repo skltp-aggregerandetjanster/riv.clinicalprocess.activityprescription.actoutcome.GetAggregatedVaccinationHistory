@@ -10,8 +10,23 @@
 
     <spring:beans>
       <!-- Load all resources needed by the core artifact -->
-      <spring:import resource="classpath:GetAggregatedVaccinationHistory-common.xml"/>
-      
+      <spring:import resource="classpath:aggregating-services-common.xml" />
+      <!-- 3. Replacement for org.springframework.beans.factory.config.PropertyPlaceholderConfigurer 
+			that supports decrypting encrypted property values -->
+		<spring:bean
+			class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer"
+			id="propertyConfigurer">
+			<spring:constructor-arg ref="configurationEncryptor" />
+			<spring:property name="ignoreResourceNotFound" value="true" />
+			<spring:property name="locations">
+				<spring:list>
+					<spring:value>classpath:GetAggregatedVaccinationHistory-config.properties
+					</spring:value>
+					<spring:value>classpath:GetAggregatedVaccinationHistory-config-override.properties
+					</spring:value>
+				</spring:list>
+			</spring:property>
+		</spring:bean>
       <!-- Load all teststub services -->
       <spring:import resource="classpath:teststub-services/*-teststub-service.xml"/>
             
