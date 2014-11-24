@@ -21,7 +21,11 @@ import java.util.List;
 import javax.xml.ws.Holder;
 import javax.xml.ws.soap.SOAPFaultException;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mule.api.MuleEvent;
+import org.mule.construct.Flow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
@@ -29,6 +33,7 @@ import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryResponseType;
 import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.GetAggregatedVaccinationHistoryMuleServer;
+import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractAggregateIntegrationTest;
@@ -57,8 +62,17 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
 //			"aggregating-services-common.xml," + 
 //	        "aggregating-service.xml," +
 			"teststub-services/engagemangsindex-teststub-service.xml," + 
-			"teststub-services/service-producer-teststub-service.xml";
+			"teststub-services/service-producer-teststub-service.xml," +
+			"teststub-services/tak-teststub-service.xml";
     }
+	
+	
+
+	@Before
+	public void loadTakCache() throws Exception {
+		final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
+		takCache.updateCache();
+	}
 
 	/**
 	 * Perform a test that is expected to return zero hits
@@ -159,7 +173,6 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
      * @return
      */
 	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
-
 		// Setup and perform the call to the web service
 		GetAggregatedVaccinationHistoryTestConsumer consumer = new GetAggregatedVaccinationHistoryTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId ,originalConsumerHsaId);
 		Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();

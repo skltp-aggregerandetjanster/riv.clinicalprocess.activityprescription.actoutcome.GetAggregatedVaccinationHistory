@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
 import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryType;
+import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
 import se.skltp.agp.service.api.QueryObject;
@@ -23,7 +24,13 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
 	private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
 	private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
-
+	
+	private TakCacheBean takCache;
+	
+	public void setTakCache(TakCacheBean takCache) {
+		this.takCache = takCache;
+	}
+	
 	/**
 	 * Filtrera svarsposter fr??n i EI (ei-engagement) baserat parametrar i GetVaccinationHistory requestet (req).
 	 * F??ljande villkor m??ste vara sanna f??r att en svarspost fr??n EI skall tas med i svaret:
@@ -45,11 +52,13 @@ public class RequestListFactoryImpl implements RequestListFactory {
 		log.info("Got {} hits in the engagement index", inEngagements.size());
 
 		Map<String, List<String>> sourceSystem_pdlUnitList_map = new HashMap<String, List<String>>();
-		
+				
 		for (EngagementType inEng : inEngagements) {	
 			if(isPartOf(reqCareUnit, inEng.getLogicalAddress())) {
-				log.debug("Add SS: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
-				addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
+				if(takCache.contains(inEng.getLogicalAddress())) {
+					log.debug("Add SS: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
+					addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
+				}
 			}
 		}
 
