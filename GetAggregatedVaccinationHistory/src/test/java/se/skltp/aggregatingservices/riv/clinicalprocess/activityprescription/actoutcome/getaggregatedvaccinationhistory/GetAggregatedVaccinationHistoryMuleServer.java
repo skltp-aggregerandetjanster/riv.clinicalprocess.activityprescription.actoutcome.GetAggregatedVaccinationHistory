@@ -16,7 +16,7 @@ public class GetAggregatedVaccinationHistoryMuleServer {
  
 
 	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedVaccinationHistoryMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-v2-config");
 
 	public static void main(String[] args) throws Exception {
 	
