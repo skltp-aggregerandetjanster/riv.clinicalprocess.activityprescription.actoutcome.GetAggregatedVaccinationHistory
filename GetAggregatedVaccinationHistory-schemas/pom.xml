@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
+[soi-toolkit.gen.version=0.6.2-SNAPSHOT]
+[soi-toolkit.gen.type=schemas]
+[soi-toolkit.gen.createDate=2014-11-17T11:18:26.499+01:00]
+[soi-toolkit.gen.artifactId=GetAggregatedVaccinationHistory]
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.soitoolkit.commons.poms</groupId>
+		<artifactId>soitoolkit-default-parent</artifactId>
+		<version>0.6.1</version>
+	</parent>
+
+	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
+	<artifactId>GetAggregatedVaccinationHistory-schemas</artifactId>
+	<version>2.0.0-RC2-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>GetAggregatedVaccinationHistory-schemas</name>
+
+	<properties>
+        <!-- Properties for generating code from WSDL and XML Schemas (JAX-WS + JAXB) -->
+        <schema.path>${basedir}/src/main/resources/schemas</schema.path>
+        <schema.gen.src.dir>${project.build.directory}/generated-sources/cxf</schema.gen.src.dir>
+	</properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.soitoolkit.commons.poms</groupId>
+      <artifactId>soitoolkit-schemas-jax-ws-dependencies</artifactId>
+      <version>${soitoolkit.version}</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+ 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<configuration>
+					<!-- fork to avoid encoding issues, ref: soi-toolkit issue 360 -->
+					<fork>once</fork>
+					<additionalJvmArgs>-Dfile.encoding=UTF-8</additionalJvmArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>ws.generate</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>${schema.gen.src.dir}</sourceRoot>
+							<wsdlOptions>
+	                            <wsdlOption>
+									<wsdl>${schema.path}/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_2.0_RIVTABP21.wsdl</wsdl>
+									<extraargs>
+									<extraarg>-validate</extraarg>
+									<extraarg>-p</extraarg>
+									<extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21=riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistory.v2.rivtabp21</extraarg>
+									<extraarg>-p</extraarg>
+									<extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2=riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2</extraarg>
+									<extraarg>-p</extraarg>
+									<extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:2=riv.clinicalprocess.activityprescription.actoutcome.v2</extraarg>
+									<extraarg>-p</extraarg>
+									<extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2=riv.clinicalprocess.activityprescription.actoutcome.enums.v2</extraarg>
+									<extraarg>-p</extraarg>
+									<extraarg>urn:riv:itintegration:registry:1=riv.itintegration.registry.v1</extraarg>
+									</extraargs>
+	            				</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<!-- Create a zip-file only containing wsdl & xsd files, i.e. no JAX-WS/JAXB-generated artifacts, for example for a Microsoft .Net C# app -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<!-- Plugin-dependency to a shared assembly-descriptor that creates the zip-file -->
+						<groupId>org.soitoolkit.commons.poms</groupId>
+						<artifactId>soitoolkit-assembly-descriptors</artifactId>
+						<version>${soitoolkit.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>schema-assembly-descriptor.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

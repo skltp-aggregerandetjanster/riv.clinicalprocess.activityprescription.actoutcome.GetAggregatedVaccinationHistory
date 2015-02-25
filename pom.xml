@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
+[soi-toolkit.gen.version=0.6.2-SNAPSHOT]
+[soi-toolkit.gen.type=services]
+[soi-toolkit.gen.createDate=2014-11-17T11:06:21.922+01:00]
+[soi-toolkit.gen.artifactId=GetAggregatedVaccinationHistory]
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -9,349 +16,41 @@
         <version>0.6.1</version>
     </parent>
 
-    <groupId>se.skltp.aggregatingservices.clinicalprocess.activityprescription.actoutcome</groupId>
-    <artifactId>GetAggregatedVaccinationHistory</artifactId>
-    <version>1.1.2-SNAPSHOT</version>
-    <packaging>mule</packaging>
-    <name>GetAggregatedVaccinationHistory</name>
+    <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
+    <artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
+    <version>2.0.0-RC2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>GetAggregatedVaccinationHistory-parent</name>
 
-    <properties>
-        <skltp.agp.version>1.2.1</skltp.agp.version>
-
-        <!-- Properties for generating code from XML Schemas (JAX-WS) -->
-        <schema.path>${basedir}/src/main/resources/schemas</schema.path>
-        <cxf.version>2.5.1</cxf.version>
-    </properties>
-    
-    <pluginRepositories>
-      <pluginRepository>
-        <id>eviwarePluginRepository</id>
-        <url>http://www.eviware.com/repository/maven2/</url>
-      </pluginRepository>
-    </pluginRepositories>
-      
     <scm>
-        <connection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</connection>
-        <developerConnection>scm:svn:https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory//trunk</developerConnection>
-        <url>https://skltpservices.googlecode.com/svn/AggregatingServices/riv.clinicalprocess.activityprescription.actoutcome/GetAggregatedVaccinationHistory/trunk</url>
-    </scm>
-    
-	<dependencies>	
-
-        <dependency>
-          <groupId>se.skltp.agp</groupId>
-          <artifactId>agp-core</artifactId>
-          <version>${skltp.agp.version}</version>
-        </dependency>
-
-        <dependency>
-          <groupId>org.soitoolkit.commons.components</groupId>
-            <artifactId>soitoolkit-commons-mule</artifactId>
-            <version>${soitoolkit.version}</version>
-        </dependency>
+					<url>http://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory</url>
+					<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory.git</connection>
+					<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory.git</developerConnection>
+					<tag>HEAD</tag>
+				</scm>
 
 
-<!-- 
-        <dependency>
-          <groupId>org.soitoolkit.commons.components</groupId>
-                <artifactId>soitoolkit-studio-components</artifactId>
-                <version>${soitoolkit.version}</version>
-        </dependency>
+    <modules>
+      <module>GetAggregatedVaccinationHistory</module>
+      <module>GetAggregatedVaccinationHistory-teststub</module>
+			<module>GetAggregatedVaccinationHistory-schemas</module>
+    </modules>
 
-        TODO: Mule EE dependency
-        <dependency>
-            <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-            <artifactId>soitoolkit-mule-ee-3.3.1-dependencies</artifactId>
-            <version>${soitoolkit.version}</version>
-            <type>pom</type>
-        </dependency>
- -->
-
-        <dependency>
-          <groupId>org.soitoolkit.commons.poms.mule-dependencies</groupId>
-          <artifactId>soitoolkit-mule-3.3.1-dependencies</artifactId>
-          <version>${soitoolkit.version}</version>
-          <type>pom</type>
-        </dependency>
-        <!-- TEST DEPENDENCIES -->
-
-        <dependency>
-            <groupId>org.soitoolkit.commons.poms</groupId>
-            <artifactId>soitoolkit-test-dependencies</artifactId>
-            <version>${soitoolkit.version}</version>
-            <type>pom</type>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>se.skltp.agp</groupId>
-            <artifactId>agp-test-common</artifactId>
-            <version>${skltp.agp.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-		<!-- Mockito -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<scope>test</scope>
-			<version>1.8.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<scope>test</scope>
-			<version>1.8.5</version>
-		</dependency>
-
-  </dependencies> 
-
-    <build>
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-            </resource>
-            <resource>
-                <!-- To get mule-config files from the Mule Studio defined resource-folder in the classpath... -->
-                <directory>${basedir}/src/main/app</directory>
-            </resource>
-        </resources>
-
-		<plugins>   
-            <plugin>
-                <!-- Add mule-nature to the eclipse-.project-file -->
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <additionalBuildcommands>
-                        <buildcommand>org.mule.tooling.core.muleBuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <additionalProjectnatures>
-                        <projectnature>org.mule.tooling.core.muleNature</projectnature>
-                    </additionalProjectnatures>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.mule.tools</groupId>
-                <artifactId>maven-mule-plugin</artifactId>
-                <extensions>true</extensions>
-                <!-- Include mule-dependencies that doesn't come with Mule 3.x otherwise we can't install to a vanilla Mule 3.x installation -->
-                <configuration>
-                    <inclusions>
-                        <inclusion>
-                            <groupId>org.mule.modules</groupId>
-                            <artifactId>mule-module-rest</artifactId>
-                        </inclusion>
-                        <inclusion>
-                            <groupId>org.mule.modules</groupId>
-                            <artifactId>devkit</artifactId>
-                        </inclusion>
-                    </inclusions>
-                    <exclusions>
-
-                      <!-- xercesImpl is endorsed in MULE_HOME/lib/endorsed, see issue 274 -->
-                      <exclusion>
-                        <groupId>xerces</groupId>
-                        <artifactId>xercesImpl</artifactId>
-                      </exclusion>
-
-                      <!-- log4j is already included in MULE_HOME/lib/boot, see issue 283 -->
-                      <exclusion>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-                      </exclusion>
-
-                      <!-- junit is already included in MULE_HOME/lib/opt, see issue 283 -->
-                      <exclusion>
-						<groupId>junit</groupId>
-						<artifactId>junit</artifactId>
-                      </exclusion>
-
-                      <!-- servlet-api-2.5 is already included in MULE_HOME/lib/opt, see issue 283 -->
-                      <exclusion>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>servlet-api-2.5</artifactId>
-                      </exclusion>
-
-                      <!-- jug is already included in MULE_HOME/lib/opt, see issue 283 -->
-                      <exclusion>
-						<groupId>org.safehaus.jug</groupId>
-						<artifactId>jug.osgi</artifactId>
-                      </exclusion>
-                      <!-- activemq needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
-                      <exclusion>
-						<groupId>org.apache.activemq</groupId>
-						<artifactId>activemq-core</artifactId>
-                      </exclusion>
-                      <exclusion>
-						<groupId>org.apache.xbean</groupId>
-						<artifactId>xbean-spring</artifactId>
-                      </exclusion>
-
-                      <!-- hornetq needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
-                      <exclusion>
-						<groupId>org.hornetq</groupId>
-						<artifactId>hornetq-core-client</artifactId>
-                      </exclusion>
-                      <exclusion>
-				        <groupId>org.hornetq</groupId>
-				        <artifactId>hornetq-jms</artifactId>
-                      </exclusion>
-                      <exclusion>
-						<groupId>org.jboss.netty</groupId>
-						<artifactId>netty</artifactId>
-                      </exclusion>
-
-                      <!-- jtds (JDBC driver fpr Microsoft SQL Server) needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
-                      <exclusion>
-						<groupId>net.sourceforge.jtds</groupId>
-						<artifactId>jtds</artifactId>
-                      </exclusion>
-
-                    </exclusions>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-              <artifactId>maven-jar-plugin</artifactId>
-              <configuration>
-                <!-- 
-                 if no classifier is declared, then a mvn install results in a file in
-                 the local repo: ic2-1.0.0-SNAPSHOT.mule
-                 which is a jar-file - only strangely named and with a bad extension
-                -->
-                <classifier>core</classifier>
-                <excludes>
-                  <exclude>log4j.xml</exclude>
-                </excludes>
-              </configuration>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>jar</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-            
-			<plugin>
-			    <artifactId>maven-resources-plugin</artifactId>
-			    <executions>
-			        <execution>
-			            <id>copy-log4j-resource</id>
-			            <phase>prepare-package</phase>
-			            <goals>
-			                <goal>copy-resources</goal>
-			            </goals>
-			            <configuration>
-			                <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-			                <resources>
-			                    <resource>
-			                        <directory>src/environment</directory>
-			                        <includes>
-			                            <include>log4j.xml</include>
-			                            <include>log4j.dtd</include>
-			                        </includes>
-			                    </resource>
-			                </resources>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>
-
-      <plugin>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-codegen-plugin</artifactId>
-        <version>${cxf.version}</version>
-        <executions>
-          <execution>
-            <id>generate-sources</id>
-            <phase>generate-sources</phase>
-            <configuration>
-              <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-              <wsdlOptions>
-                <wsdloption>
-                  <wsdl>${schema.path}/Clinicalprocess_activityprescription_actoutcome_1.0.0/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_1.0_RIVTABP21.wsdl</wsdl>
-                  <extraargs>
-                    <extraarg>-p</extraarg>
-                    <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:1=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryinitiator.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21=se.riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistory.v1.rivtabp21</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>urn:riv:clinicalprocess:activityprescription:actoutcome:1=se.riv.clinicalprocess.activityprescription.actoutcome.v1</extraarg>
-                  </extraargs>
-                </wsdloption>
-              </wsdlOptions>
-            </configuration>
-            <goals>
-              <goal>wsdl2java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      </plugins>
-
-    </build>
-
-    <profiles>
-        <profile>
-            <id>muleServer</id>
-            <!-- Start mule server with the command "mvn -PmuleServer" or "mvn -PmuleServer -Dexec.args="${artifaceId}-config.xml"" if you want to override the default config-file -->
-            <build>
-                <defaultGoal>test</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>java</goal>
-                                </goals>
-                                <configuration>
-                                    <mainClass>se.skltp.agp.MuleServer</mainClass>
-                                    <classpathScope>test</classpathScope>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        
-        <profile>
-          <id>acceptance-test</id>
-          <build>
-            <defaultGoal>test</defaultGoal>
-            <plugins>
-              <plugin>
-                <groupId>eviware</groupId>
-                <artifactId>maven-soapui-plugin</artifactId>
-                <version>4.5.1</version>
-                <configuration>
-                  <projectFile>src/test/resources/GetVaccinationHistory-soapui-project.xml</projectFile>
-                  <host>${hostname}</host>
-                  <outputFolder>target</outputFolder>
-                  <settingsFile>${settingsFile}</settingsFile>
-                </configuration>
-              </plugin>
-            </plugins>
-          </build>
-        </profile>
-    </profiles>
-</project>
+		<build>
+			<pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>2.5.1</version>
+						<configuration>
+							<autoVersionSubmodules>true</autoVersionSubmodules>
+							<tagNameFormat>v@{project.version}</tagNameFormat>
+							<pushChanges>false</pushChanges>
+							<localCheckout>true</localCheckout>
+						</configuration>
+					</plugin>
+				</plugins>
+			</pluginManagement>
+		</build>
+  </project>
