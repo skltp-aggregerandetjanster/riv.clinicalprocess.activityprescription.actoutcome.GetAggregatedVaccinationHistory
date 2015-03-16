@@ -38,13 +38,13 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <dependency>
         <groupId>se.skltp.agp</groupId>
         <artifactId>agp-core</artifactId>
-        <version>1.2.0</version>
+        <version>1.2.3</version>
       </dependency>
 
     <dependency>
        <groupId>se.skltp.agp</groupId>
        <artifactId>agp-test-common</artifactId>
-       <version>1.2.0</version>
+       <version>1.2.3</version>
     </dependency>
 
 	</dependencies>

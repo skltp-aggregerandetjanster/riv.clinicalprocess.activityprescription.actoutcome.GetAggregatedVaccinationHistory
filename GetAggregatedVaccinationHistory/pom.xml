@@ -21,11 +21,9 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <name>GetAggregatedVaccinationHistory</name>
 
     <properties>
-        <skltp.agp.version>1.2.2</skltp.agp.version>
-
+        <skltp.agp.version>1.2.3</skltp.agp.version>
         <!-- Properties for generating code from XML Schemas (JAX-WS) -->
         <cxf.version>2.5.1</cxf.version>
-
     </properties>
 
 	<dependencies>
