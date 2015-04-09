@@ -7,20 +7,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
-import riv.clinicalprocess.activityprescription.actoutcome.enums.v2.ResultCodeEnum;
-import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryResponseType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.ActorType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.AdditionalPatientInformationType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.CVType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.HealthcareProfessionalType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.LegalAuthenticatorType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.OrgUnitType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.PatientSummaryHeaderType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.PersonIdType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.RegistrationRecordType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.ResultType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordBodyType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordType;
+// import riv.clinicalprocess.activityprescription.actoutcome.enums.v1.ResultCodeEnum;
+import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.ActorType;
+// import riv.clinicalprocess.activityprescription.actoutcome.v1.AdditionalPatientInformationType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.CVType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.HealthcareProfessionalType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.LegalAuthenticatorType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.OrgUnitType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.PatientSummaryHeaderType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.RegistrationRecordType;
+// import riv.clinicalprocess.activityprescription.actoutcome.v1.ResultType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordBodyType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerDb {
@@ -38,7 +38,6 @@ public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerD
         for (int i = 0; i < responseItems.length; i++) {
             response.getVaccinationMedicalRecord().add((VaccinationMedicalRecordType) responseItems[i]);
         }
-        response.setResult(result());
         return response;
     }
 
@@ -52,16 +51,8 @@ public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerD
         return response;
     }
 
-    protected ResultType result() {
-        final ResultType type = new ResultType();
-        type.setResultCode(ResultCodeEnum.OK);
-        type.setMessage("Ok");
-        return type;
-    }
-
     protected VaccinationMedicalRecordBodyType body(final String patientId, final String logicalAddress) {
         final VaccinationMedicalRecordBodyType type = new VaccinationMedicalRecordBodyType();
-        type.setAdditionalPatientInformation(patientInfo(patientId));
         type.setRegistrationRecord(record());
         return type;
     }
@@ -82,7 +73,7 @@ public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerD
         final OrgUnitType type = new OrgUnitType();
         type.setOrgUnitAddress("Testvagen 3");
         type.setOrgUnitEmail("test@test.se");
-        type.setOrgUnitHSAId("TEST-HSAId-1234");
+        type.setOrgUnitHSAid("TEST-HSAId-1234");
         type.setOrgUnitLocation("Testby");
         type.setOrgUnitName("Testhuset");
         type.setOrgUnitTelecom("00-0000000");
@@ -96,13 +87,6 @@ public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerD
         type.setPersonEmail("test@test.se");
         type.setPersonName("Test Testsson");
         type.setPersonTelecom("00-0000000");
-        return type;
-    }
-
-    protected AdditionalPatientInformationType patientInfo(final String patientId) {
-        final AdditionalPatientInformationType type = new AdditionalPatientInformationType();
-        type.setDateOfBirth(dateOfBirth(patientId));
-        type.setGender(cvType());
         return type;
     }
 
@@ -132,7 +116,7 @@ public class GetAggregatedVaccinationHistoryTestProducerDb extends TestProducerD
 
     protected LegalAuthenticatorType legal() {
         final LegalAuthenticatorType type = new LegalAuthenticatorType();
-        type.setLegalAuthenticatorHSAId("TEST-HSAId");
+        type.setLegalAuthenticatorHSAid("TEST-HSAId");
         type.setLegalAuthenticatorName("Test Testsson");
         type.setSignatureTime(df.format(new Date()));
         return type;

@@ -64,7 +64,7 @@
 		<level value="INFO" />
 	</logger>
 	
-	<logger name="se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory">
+	<logger name="se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.v1">
 		<level value="INFO" />
 	</logger>
 

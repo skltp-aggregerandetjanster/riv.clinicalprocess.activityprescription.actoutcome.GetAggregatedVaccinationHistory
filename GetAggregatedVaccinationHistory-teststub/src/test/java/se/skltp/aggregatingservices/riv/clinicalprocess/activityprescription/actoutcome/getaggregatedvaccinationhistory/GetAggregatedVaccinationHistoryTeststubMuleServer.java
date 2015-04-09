@@ -11,15 +11,12 @@ import org.slf4j.LoggerFactory;
 
 public class GetAggregatedVaccinationHistoryTeststubMuleServer {
 
-
 	public static final String MULE_SERVER_ID   = "GetAggregatedVaccinationHistory-teststub";
- 
 
 	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedVaccinationHistoryTeststubMuleServer.class);
     private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-config");
 
 	public static void main(String[] args) throws Exception {
-
  
         // Configure the mule-server
         // Note: do not activate the "soitoolkit-teststubs" profile here since it sets a
@@ -33,16 +30,10 @@ public class GetAggregatedVaccinationHistoryTeststubMuleServer {
 
     /**
      * Address based on usage of the servlet-transport and a config-property for the URI-part
-     * 
-     * @param serviceUrlPropertyName
-     * @return
      */
     public static String getAddress(String serviceUrlPropertyName) {
-
         String url = rb.getString(serviceUrlPropertyName);
-
 	    logger.info("URL: {}", url);
     	return url;
- 
     }	
 }

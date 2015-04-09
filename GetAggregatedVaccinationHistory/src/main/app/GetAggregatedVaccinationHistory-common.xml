@@ -11,14 +11,14 @@
 	xmlns:rest-router="http://www.mulesoft.org/schema/mule/rest-router"
 	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans-current.xsd
-		http://www.mulesoft.org/schema/mule/core       http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-		http://www.mulesoft.org/schema/mule/jms        http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
-		http://www.mulesoft.org/schema/mule/management http://www.mulesoft.org/schema/mule/management/current/mule-management.xsd
-		http://www.mulesoft.org/schema/mule/json       http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-		http://www.mulesoft.org/schema/mule/scripting  http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
-		http://www.mulesoft.org/schema/mule/rest-router       http://www.mulesoft.org/schema/mule/rest-router/current/mule-rest-router.xsd
-		http://www.mulesoft.org/schema/mule/xml        http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+		http://www.springframework.org/schema/beans      http://www.springframework.org/schema/beans/spring-beans-current.xsd
+		http://www.mulesoft.org/schema/mule/core         http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/jms          http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+		http://www.mulesoft.org/schema/mule/management   http://www.mulesoft.org/schema/mule/management/current/mule-management.xsd
+		http://www.mulesoft.org/schema/mule/json         http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+		http://www.mulesoft.org/schema/mule/scripting    http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+		http://www.mulesoft.org/schema/mule/rest-router  http://www.mulesoft.org/schema/mule/rest-router/current/mule-rest-router.xsd
+		http://www.mulesoft.org/schema/mule/xml          http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 	">
 
   <spring:beans>
@@ -37,8 +37,8 @@
 	    <spring:property name="ignoreResourceNotFound" value="true"/>
 	    <spring:property name="locations">
 	      <spring:list>
-	        <spring:value>classpath:GetAggregatedVaccinationHistory-v2-config.properties</spring:value>
-	        <spring:value>classpath:GetAggregatedVaccinationHistory-v2-config-override.properties</spring:value>
+	        <spring:value>classpath:GetAggregatedVaccinationHistory-v1-config.properties</spring:value>
+	        <spring:value>classpath:GetAggregatedVaccinationHistory-v1-config-override.properties</spring:value>
 	      </spring:list>
 	    </spring:property>
 	  </spring:bean>

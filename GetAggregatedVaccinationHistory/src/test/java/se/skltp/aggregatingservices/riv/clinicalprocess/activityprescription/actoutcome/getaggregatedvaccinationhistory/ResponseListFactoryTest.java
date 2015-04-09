@@ -11,11 +11,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 
-import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryResponseType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.PatientSummaryHeaderType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.PersonIdType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordBodyType;
-import riv.clinicalprocess.activityprescription.actoutcome.v2.VaccinationMedicalRecordType;
+import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.PatientSummaryHeaderType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordBodyType;
+import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.service.api.QueryObject;
 

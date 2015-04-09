@@ -14,12 +14,16 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <parent>
     <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
     <artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
-    <version>2.0.0-RC5-SNAPSHOT</version>
+    <version>1.1.2-RC1-SNAPSHOT</version>
   </parent>
 
   <artifactId>GetAggregatedVaccinationHistory-teststub</artifactId>
   <packaging>mule</packaging>
   <name>GetAggregatedVaccinationHistory-teststub</name>
+
+  <properties>
+    <skltp.agp.version>1.2.3</skltp.agp.version>
+  </properties>
 
   <dependencies>
     <!-- dependencies to the integration component that contains the services to stub -->
@@ -39,12 +43,12 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <dependency>
       <groupId>se.skltp.agp</groupId>
       <artifactId>agp-core</artifactId>
-      <version>1.2.3</version>
+      <version>${skltp.agp.version}</version>
     </dependency>
     <dependency>
       <groupId>se.skltp.agp</groupId>
       <artifactId>agp-test-common</artifactId>
-      <version>1.2.3</version>
+      <version>${skltp.agp.version}</version>
     </dependency>
   </dependencies>
 
