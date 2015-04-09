@@ -14,24 +14,25 @@ import se.skltp.agp.service.api.ResponseListFactory;
 
 public class ResponseListFactoryImpl implements ResponseListFactory {
 
-	private static final Logger log = LoggerFactory.getLogger(ResponseListFactoryImpl.class);
-	private static final JaxbUtil jaxbUtil = new JaxbUtil(GetVaccinationHistoryResponseType.class, ProcessingStatusType.class);
-	private static final ObjectFactory OF = new ObjectFactory();
+    private static final Logger log = LoggerFactory.getLogger(ResponseListFactoryImpl.class);
+    private static final JaxbUtil jaxbUtil = new JaxbUtil(GetVaccinationHistoryResponseType.class, ProcessingStatusType.class);
+    private static final ObjectFactory OF = new ObjectFactory();
 
-	@Override
-	public String getXmlFromAggregatedResponse(QueryObject queryObject, List<Object> aggregatedResponseList) {
-		final GetVaccinationHistoryResponseType aggregatedResponse = new GetVaccinationHistoryResponseType();
-		for(Object object : aggregatedResponseList) {
-			final GetVaccinationHistoryResponseType response = (GetVaccinationHistoryResponseType) object;
-			aggregatedResponse.getVaccinationMedicalRecord().addAll(response.getVaccinationMedicalRecord());
-		}
-		if (log.isInfoEnabled()) {
-    		String subjectOfCareId = queryObject.getFindContent().getRegisteredResidentIdentification();
-        	log.info("Returning {} aggregated alert informations for subject of care id {}", aggregatedResponse.getVaccinationMedicalRecord().size() ,subjectOfCareId);
+    @Override
+    public String getXmlFromAggregatedResponse(QueryObject queryObject, List<Object> aggregatedResponseList) {
+        final GetVaccinationHistoryResponseType aggregatedResponse = new GetVaccinationHistoryResponseType();
+        for (Object object : aggregatedResponseList) {
+            final GetVaccinationHistoryResponseType response = (GetVaccinationHistoryResponseType) object;
+            aggregatedResponse.getVaccinationMedicalRecord().addAll(response.getVaccinationMedicalRecord());
+        }
+        if (log.isInfoEnabled()) {
+            String subjectOfCareId = queryObject.getFindContent().getRegisteredResidentIdentification();
+            log.info("Returning {} aggregated alert informations for subject of care id {}", 
+                      aggregatedResponse.getVaccinationMedicalRecord().size(), subjectOfCareId);
         }
 
-        // Since the class GetAlertInformationResponseType don't have an @XmlRootElement annotation
+        // Since the class GetAlertInformationResponseType doesn't have an @XmlRootElement annotation
         // we need to use the ObjectFactory to add it.
-		return jaxbUtil.marshal(OF.createGetVaccinationHistoryResponse(aggregatedResponse));
-	}
+        return jaxbUtil.marshal(OF.createGetVaccinationHistoryResponse(aggregatedResponse));
+    }
 }
