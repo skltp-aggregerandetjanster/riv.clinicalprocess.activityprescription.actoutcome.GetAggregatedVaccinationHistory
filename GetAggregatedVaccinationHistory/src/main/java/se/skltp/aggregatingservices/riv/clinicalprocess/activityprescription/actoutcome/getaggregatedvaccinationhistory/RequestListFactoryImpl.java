@@ -22,114 +22,111 @@ import se.skltp.agp.service.api.RequestListFactory;
 
 public class RequestListFactoryImpl implements RequestListFactory {
 
-	private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
-	private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
-	
-	private TakCacheBean takCache;
-	
-	public void setTakCache(TakCacheBean takCache) {
-		this.takCache = takCache;
-	}
-	
-	/**
-	 * Filtrera svarsposter fr??n i EI (ei-engagement) baserat parametrar i GetVaccinationHistory requestet (req).
-	 * F??ljande villkor m??ste vara sanna f??r att en svarspost fr??n EI skall tas med i svaret:
-	 *
-	 * Svarsposter fr??n EI som passerat filtreringen grupperas p?? f??ltet sourceSystem samt postens f??lt logicalAddress (= PDL-enhet) samlas i listan careUnitId per varje sourceSystem
-	 *
-	 * Ett anrop g??rs per funnet sourceSystem med f??ljande v??rden i anropet:
-	 *
-	 * 1. logicalAddress = sourceSystem (systemadressering)
-	 * 2. subjectOfCareId = orginal-request.subjectOfCareId
-	 */
-	public List<Object[]> createRequestList(QueryObject qo, FindContentResponseType src) {
-		final GetVaccinationHistoryType originalRequest = (GetVaccinationHistoryType) qo.getExtraArg();
-		final String reqCareUnit = originalRequest.getSourceSystemHSAid();
-		
-		FindContentResponseType eiResp = (FindContentResponseType) src;
-		List<EngagementType> inEngagements = eiResp.getEngagement();
-		
-		log.info("Got {} hits in the engagement index", inEngagements.size());
+    private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
+    private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
 
-		Map<String, List<String>> sourceSystem_pdlUnitList_map = new HashMap<String, List<String>>();
-				
-		for (EngagementType inEng : inEngagements) {	
-			if(isPartOf(reqCareUnit, inEng.getLogicalAddress())) {
-				if(takCache.contains(inEng.getLogicalAddress())) {
-					log.debug("Add SS: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
-					addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
-				}
-			}
-		}
+    // contains HSAid for a specific namespace
+    private TakCacheBean takCache;
+    public void setTakCache(TakCacheBean takCache) {
+        this.takCache = takCache;
+    }
 
-		// Prepare the result of the transformation as a list of request-payloads, 
-		// one payload for each unique logical-address (e.g. source system since we are using systemaddressing),
-		// each payload built up as an object-array according to the JAX-WS signature for the method in the service interface
-		List<Object[]> reqList = new ArrayList<Object[]>();
-		for (Entry<String, List<String>> entry : sourceSystem_pdlUnitList_map.entrySet()) {
-			final String sourceSystem = entry.getKey();
+    /**
+     * Filtrera svarsposter från i EI (ei-engagement) baserat parametrar i GetVaccinationHistory requestet (req). 
+     * 
+     * Följande villkor måste vara sanna för att en svarspost från EI skall tas med i svaret:
+     *
+     * Svarsposter från EI som passerat filtreringen grupperas på fältet sourceSystem 
+     * samt postens fält logicalAddress (= PDL-enhet) samlas i listan careUnitId per varje sourceSystem
+     *
+     * Ett anrop görs per funnet sourceSystem med följande värden i anropet:
+     *
+     * 1. logicalAddress  = sourceSystem (systemadressering) 
+     * 2. subjectOfCareId = original-request.subjectOfCareId
+     */
+    public List<Object[]> createRequestList(QueryObject qo, FindContentResponseType src) {
+        final GetVaccinationHistoryType originalRequest = (GetVaccinationHistoryType) qo.getExtraArg();
+        final String reqCareUnit = originalRequest.getSourceSystemHSAid();
+
+        FindContentResponseType eiResp = (FindContentResponseType) src;
+        List<EngagementType> inEngagements = eiResp.getEngagement();
+
+        log.info("Got {} hits in the engagement index", inEngagements.size());
+
+        Map<String, List<String>> sourceSystem_pdlUnitList_map = new HashMap<String, List<String>>();
+        
+        for (EngagementType inEng : inEngagements) {
+            // discard engagements that are not the same as the request HSAid (if specified)
+            if (isPartOf(reqCareUnit, inEng.getLogicalAddress())) {
+                // discard engagements with HSAid that are not in takCache for specified namespace
+                if (takCache.contains(inEng.getLogicalAddress())) {
+                    log.debug("Added source system: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
+                    addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
+                }
+            }
+        }
+
+        // Prepare the result of the transformation as a list of request-payloads,
+        // one payload for each unique logical-address (e.g. source system since we are using system addressing),
+        // each payload built up as an object-array according to the JAX-WS signature for the method in the service interface
+        List<Object[]> reqList = new ArrayList<Object[]>();
+        for (Entry<String, List<String>> entry : sourceSystem_pdlUnitList_map.entrySet()) {
+            final String sourceSystem = entry.getKey();
             final GetVaccinationHistoryType request = originalRequest;
+            log.info("Calling source system using logical address {} for subject of care {}", sourceSystem, originalRequest.getPatientId().getId());
+            Object[] reqArr = new Object[] { sourceSystem, request };
+            reqList.add(reqArr);
+        }
+        log.debug("Transformed payload: {}", reqList);
+        return reqList;
+    }
 
-            if(log.isInfoEnabled()) log.info("Calling source system using logical address {} for subject of care {}", sourceSystem, originalRequest.getPatientId().getId());
+    boolean isPartOf(final String careUnitId, final String careUnit) {
+        log.debug("Check careunit {} equals expected {}", careUnitId, careUnit);
+        if (StringUtils.isBlank(careUnitId))
+            return true;
+        return careUnitId.equals(careUnit);
+    }
 
-			Object[] reqArr = new Object[] {sourceSystem, request};
-			
-			reqList.add(reqArr);
-		}
+    Date parseTs(String ts) {
+        try {
+            if (ts == null || ts.length() == 0) {
+                return null;
+            } else {
+                return df.parse(ts);
+            }
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-		log.debug("Transformed payload: {}", reqList);
+    boolean isBetween(Date from, Date to, String tsStr) {
+        log.debug("Is {} between {} and ", new Object[] { tsStr, from, to });
+        try {
+            Date ts = df.parse(tsStr);
+            if (from != null && from.after(ts))
+                return false;
+            if (to != null && to.before(ts))
+                return false;
+            return true;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-		return reqList;
-	}
-	
-	boolean isPartOf(final String careUnitId, final String careUnit) {
-		log.debug("Check careunit {} equals expected {}", careUnitId, careUnit);
-		if(StringUtils.isBlank(careUnitId)) return true;
-		return careUnitId.equals(careUnit);
-	}
+    boolean isPartOf(List<String> careUnitIdList, String careUnit) {
+        log.debug("Check presence of {} in {}", careUnit, careUnitIdList);
+        if (careUnitIdList == null || careUnitIdList.size() == 0)
+            return true;
+        return careUnitIdList.contains(careUnit);
+    }
 
-	Date parseTs(String ts) {
-		try {
-			if (ts == null || ts.length() == 0) {
-				return null;
-			} else {
-				return df.parse(ts);
-			}
-		} catch (ParseException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	boolean isBetween(Date from, Date to, String tsStr) {
-		try {
-			if (log.isDebugEnabled()) {
-				log.debug("Is {} between {} and ", new Object[] {tsStr, from, to});
-			}
-
-			Date ts = df.parse(tsStr);
-			if (from != null && from.after(ts)) return false;
-			if (to != null && to.before(ts)) return false;
-			return true;
-		} catch (ParseException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	boolean isPartOf(List<String> careUnitIdList, String careUnit) {
-
-		log.debug("Check presence of {} in {}", careUnit, careUnitIdList);
-
-		if (careUnitIdList == null || careUnitIdList.size() == 0) return true;
-
-		return careUnitIdList.contains(careUnit);
-	}
-
-	void addPdlUnitToSourceSystem(Map<String, List<String>> sourceSystem_pdlUnitList_map, String sourceSystem, String pdlUnitId) {
-		List<String> careUnitList = sourceSystem_pdlUnitList_map.get(sourceSystem);
-		if (careUnitList == null) {
-			careUnitList = new ArrayList<String>();
-			sourceSystem_pdlUnitList_map.put(sourceSystem, careUnitList);
-		}
-		careUnitList.add(pdlUnitId);
-	}
+    void addPdlUnitToSourceSystem(Map<String, List<String>> sourceSystem_pdlUnitList_map, String sourceSystem, String pdlUnitId) {
+        List<String> careUnitList = sourceSystem_pdlUnitList_map.get(sourceSystem);
+        if (careUnitList == null) {
+            careUnitList = new ArrayList<String>();
+            sourceSystem_pdlUnitList_map.put(sourceSystem, careUnitList);
+        }
+        careUnitList.add(pdlUnitId);
+    }
 }
