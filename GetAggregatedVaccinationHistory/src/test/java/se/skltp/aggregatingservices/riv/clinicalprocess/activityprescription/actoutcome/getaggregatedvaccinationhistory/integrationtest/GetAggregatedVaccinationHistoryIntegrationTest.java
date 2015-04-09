@@ -43,7 +43,7 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
     @SuppressWarnings("unused")
     private static final Logger log = LoggerFactory.getLogger(GetAggregatedVaccinationHistoryIntegrationTest.class);
 
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-v2-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-v1-config");
     private static final String SKLTP_HSA_ID = rb.getString("SKLTP_HSA_ID");
 
     private static final String LOGICAL_ADDRESS = "logical-address";
