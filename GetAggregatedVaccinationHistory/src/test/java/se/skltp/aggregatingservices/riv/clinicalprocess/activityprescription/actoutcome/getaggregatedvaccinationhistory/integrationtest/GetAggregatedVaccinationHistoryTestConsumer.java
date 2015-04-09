@@ -42,7 +42,7 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
     public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder,
             Holder<GetVaccinationHistoryResponseType> responseHolder) {
 
-        log.debug("Calling GetRequestActivities-soap-service with Registered Resident Id = {}", registeredResidentId);
+        log.info("Calling GetRequestVaccinationHistory-soap-service with registered resident id = {}", registeredResidentId);
         GetVaccinationHistoryType request = new GetVaccinationHistoryType();
         final PersonIdType personIdType = new PersonIdType();
         personIdType.setId(registeredResidentId);
