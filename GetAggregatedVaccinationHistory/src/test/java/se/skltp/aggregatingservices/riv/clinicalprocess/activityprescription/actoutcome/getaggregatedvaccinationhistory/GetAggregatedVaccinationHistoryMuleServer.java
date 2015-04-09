@@ -12,7 +12,7 @@ public class GetAggregatedVaccinationHistoryMuleServer {
     public static final String MULE_SERVER_ID = "GetAggregatedVaccinationHistory";
 
     private static final Logger logger = LoggerFactory.getLogger(GetAggregatedVaccinationHistoryMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-v2-config");
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedVaccinationHistory-v1-config");
 
     public static void main(String[] args) throws Exception {
 

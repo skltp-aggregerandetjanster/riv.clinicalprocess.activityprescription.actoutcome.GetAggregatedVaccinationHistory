@@ -7,10 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
-// import riv.clinicalprocess.activityprescription.actoutcome.enums.v1.ResultCodeEnum;
 import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryResponseType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.ActorType;
-// import riv.clinicalprocess.activityprescription.actoutcome.v1.AdditionalPatientInformationType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.CVType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.HealthcareProfessionalType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.LegalAuthenticatorType;
@@ -18,7 +16,6 @@ import riv.clinicalprocess.activityprescription.actoutcome.v1.OrgUnitType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.PatientSummaryHeaderType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.PersonIdType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.RegistrationRecordType;
-// import riv.clinicalprocess.activityprescription.actoutcome.v1.ResultType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordBodyType;
 import riv.clinicalprocess.activityprescription.actoutcome.v1.VaccinationMedicalRecordType;
 import se.skltp.agp.test.producer.TestProducerDb;

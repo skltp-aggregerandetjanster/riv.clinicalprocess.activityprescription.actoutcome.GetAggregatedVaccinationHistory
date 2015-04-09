@@ -12,7 +12,7 @@ import se.skltp.agp.test.producer.TestProducerDb;
 
 @WebService(serviceName     = "GetVaccinationHistoryResponderService", 
             portName        = "GetVaccinationHistoryResponderPort", 
-            targetNamespace = "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21", 
+            targetNamespace = "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21", 
             name            = "GetVaccinationHistoryInteraction")
 public class GetAggregatedVaccinationHistoryTestProducer implements GetVaccinationHistoryResponderInterface {
 
