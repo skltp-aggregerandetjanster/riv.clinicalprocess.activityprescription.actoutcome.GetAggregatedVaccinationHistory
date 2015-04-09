@@ -17,11 +17,7 @@
  specific language governing permissions and limitations
  under the License.
  -->		
-<wsdl:definitions name='GetVaccinationHistoryInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema'
-  xmlns:tjsr='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2'
-  xmlns:tjsi='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:2'
-  xmlns:tns='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21'
-  targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
+<wsdl:definitions name='GetVaccinationHistoryInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1' xmlns:tjsi='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:1' xmlns:tns='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21' targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
   <xs:annotation>
     <xs:documentation>
 			 Tjänsteinteraktionens namn: GetVaccinationHistoryInteraction
@@ -35,8 +31,8 @@
 			 </xs:documentation>
   </xs:annotation>
   <wsdl:types>
-    <xs:schema targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21'>
-      <xs:import schemaLocation='GetVaccinationHistoryResponder_2.0.xsd' namespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2' />
+    <xs:schema targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:1:rivtabp21'>
+      <xs:import schemaLocation='GetVaccinationHistoryResponder_1.0.xsd' namespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1' />
       <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
     </xs:schema>
   </wsdl:types>
