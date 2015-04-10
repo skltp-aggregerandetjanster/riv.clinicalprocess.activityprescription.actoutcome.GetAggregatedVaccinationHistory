@@ -1,17 +1,21 @@
-package vaccinationhistory
+package se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory
 
 import scala.concurrent.duration._
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
-import scenarios.GetAggregatedVaccinationHistoryScenario
+import se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.scenarios.GetAggregatedVaccinationHistoryScenario
 
 /**
  * Test VP:GetAggregatedVaccinationHistory over 12 hours
  */
 class TP04Robustness extends Simulation {
 
-  val baseURL = "https://qa.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21"
+  val baseURL = if (System.getProperty("baseUrl") != null && !System.getProperty("baseUrl").isEmpty()) { 
+                  System.getProperty("baseUrl") 
+                } else {
+                  "http://ine-sit-app03.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2"
+                }
   
   val testDuration            =  12 hours
   val numberOfConcurrentUsers =   5

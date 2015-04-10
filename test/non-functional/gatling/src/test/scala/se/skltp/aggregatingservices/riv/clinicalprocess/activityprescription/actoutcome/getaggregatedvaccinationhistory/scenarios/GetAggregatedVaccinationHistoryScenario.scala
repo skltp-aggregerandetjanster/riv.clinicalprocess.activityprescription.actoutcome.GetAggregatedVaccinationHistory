@@ -1,4 +1,4 @@
-package scenarios
+package se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.scenarios
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -14,7 +14,6 @@ object GetAggregatedVaccinationHistoryScenario {
     "x-vp-sender-id"                         -> "test",
     "x-rivta-original-serviceconsumer-hsaid" -> "test",
     "Keep-Alive"                             -> "115")
-
     
   val request = exec(
         http("GetAggregatedVaccinationHistory ${patientid} - ${name}")
@@ -24,6 +23,6 @@ object GetAggregatedVaccinationHistoryScenario {
           .check(status.is(session => session("status").as[String].toInt))
           .check(xpath("soap:Envelope", List("soap" -> "http://schemas.xmlsoap.org/soap/envelope/")).exists)
           .check(substring("GetVaccinationHistoryResponse"))
-          .check(xpath("//ns3:vaccinationHistory", List("ns3" -> "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:3")).count.is(session => session("count").as[String].toInt))
+          .check(xpath("//ns2:vaccinationMedicalRecord", List("ns2" -> "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2")).count.is(session => session("count").as[String].toInt))
       )
 }
