@@ -18,7 +18,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
   <artifactId>GetAggregatedVaccinationHistory-schemas</artifactId>
-  <version>1.1.2-RC1</version>
+  <version>1.1.2-RC2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>GetAggregatedVaccinationHistory-schemas</name>
 
@@ -110,8 +110,4 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
     </plugins>
   </build>
-
-  <scm>
-    <tag>v1.1.2-RC1</tag>
-  </scm>
 </project>
