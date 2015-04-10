@@ -1,4 +1,4 @@
-package scenarios
+package se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.scenarios
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -14,7 +14,7 @@ object GetAggregatedVaccinationHistoryScenario {
     "x-vp-sender-id"                         -> "test",
     "x-rivta-original-serviceconsumer-hsaid" -> "test",
     "Keep-Alive"                             -> "115")
-
+    
   val request = exec(
         http("GetAggregatedVaccinationHistory ${patientid} - ${name}")
           .post("")
