@@ -11,7 +11,7 @@ import scenarios.GetAggregatedVaccinationHistoryScenario
  */
 class TP02Smoke extends Simulation {
 
-  val baseURL           = "https://qa.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21"
+  val baseURL           = "https://qa.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/1/rivtabp21"
   
   val testDuration        =      2 minutes
   val numberOfConcurrentUsers = 10

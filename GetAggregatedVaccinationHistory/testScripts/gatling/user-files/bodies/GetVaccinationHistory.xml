@@ -1,8 +1,8 @@
 <soapenv:Envelope 
   xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
   xmlns:urn="urn:riv:itintegration:registry:1" 
-  xmlns:urn1="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" 
-  xmlns:urn2="urn:riv:clinicalprocess:activityprescription:actoutcome:2">
+  xmlns:urn1="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1" 
+  xmlns:urn2="urn:riv:clinicalprocess:activityprescription:actoutcome:1">
    <soapenv:Header>
       <urn:LogicalAddress>5565594230</urn:LogicalAddress>
    </soapenv:Header>

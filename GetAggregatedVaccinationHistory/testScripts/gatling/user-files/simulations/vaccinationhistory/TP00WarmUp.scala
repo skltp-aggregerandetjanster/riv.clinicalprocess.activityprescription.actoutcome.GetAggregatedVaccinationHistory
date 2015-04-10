@@ -11,11 +11,11 @@ import scenarios.GetAggregatedVaccinationHistoryScenario
  */
 class TP00WarmUp extends Simulation {
 
-
-//val baseURL           = "https://test.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21"
-//val baseURL           = "http://ine-dit-app02.sth.basefarm.net:9014/GetAggregatedVaccinationHistory/service/v2"
-  val baseURL           = "https://qa.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21"
-
+//val baseURL           = "https://test.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/1/rivtabp21"
+//val baseURL           = "http://ine-dit-app02.sth.basefarm.net:9014/GetAggregatedVaccinationHistory/service/v1"
+//val baseURL           = "https://qa.esb.ntjp.se/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/1/rivtabp21"
+  
+  val baseURL           = "http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v1"
   val testDuration      = 60 seconds
   val minWaitDuration   =  2 seconds
   val maxWaitDuration   =  5 seconds
