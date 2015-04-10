@@ -1,13 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<!-- 
+<!--
 
 # WarmUp - default:33.33.33.33:8084 (http)
 mvn gatling:execute -PWarmUp
-mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2
-mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v1
+mvn gatling:execute -PWarmUp -DbaseUrl=http://ine-sit-app03.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v1
 
 # PingForConfiguration - default:33.33.33.33:8084 (http)
 mvn gatling:execute -PPingForConfiguration
@@ -16,18 +16,18 @@ mvn gatling:execute -PPingForConfiguration -DbaseUrl=http://ine-sit-app03.sth.ba
 
 # Smoke - default:ine-sit-app03 (http)
 mvn gatling:execute -PSmoke
-mvn gatling:execute -PSmoke -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v2
-mvn gatling:execute -PSmoke -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2
+mvn gatling:execute -PSmoke -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v1
+mvn gatling:execute -PSmoke -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v1
 
 # Load - default:ine-sit-app03 (http)
 mvn gatling:execute -PLoad
-mvn gatling:execute -PLoad -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v2
-mvn gatling:execute -PLoad -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2
+mvn gatling:execute -PLoad -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v1
+mvn gatling:execute -PLoad -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v1
 
 # Robustness - default:ine-sit-app03 (http)
 mvn gatling:execute -PRobustness
-mvn gatling:execute -PRobustness -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v2
-mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v2
+mvn gatling:execute -PRobustness -DbaseUrl=http://33.33.33.33:8084/GetAggregatedVaccinationHistory/service/v1
+mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net:9016/GetAggregatedVaccinationHistory/service/v1
 
 -->
 
@@ -85,7 +85,7 @@ mvn gatling:execute -PRobustness -DbaseUrl=http://ine-dit-app02.sth.basefarm.net
         <simulationClass>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome.getaggregatedvaccinationhistory.TP02Smoke</simulationClass>
       </properties>
     </profile>
-    
+
     <profile>
       <id>Load</id>
       <properties>
