@@ -82,11 +82,11 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
       </plugin>
 
       <plugin>
-				<!-- Create a zip-file only containing wsdl & xsd files, i.e. no JAX-WS/JAXB-generated artifacts, for example for a Microsoft .Net C# app -->
+        <!-- Create a zip-file only containing wsdl & xsd files, i.e. no JAX-WS/JAXB-generated artifacts, for example for a Microsoft .Net C# app -->
         <artifactId>maven-assembly-plugin</artifactId>
         <dependencies>
           <dependency>
-						<!-- Plugin-dependency to a shared assembly-descriptor that creates the zip-file -->
+            <!-- Plugin-dependency to a shared assembly-descriptor that creates the zip-file -->
             <groupId>org.soitoolkit.commons.poms</groupId>
             <artifactId>soitoolkit-assembly-descriptors</artifactId>
             <version>${soitoolkit.version}</version>

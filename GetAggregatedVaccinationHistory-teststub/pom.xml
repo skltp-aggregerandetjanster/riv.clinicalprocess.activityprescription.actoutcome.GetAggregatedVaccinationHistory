@@ -21,6 +21,10 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <packaging>mule</packaging>
   <name>GetAggregatedVaccinationHistory-teststub</name>
 
+  <properties>
+    <skltp.agp.version>1.3.0-RC1</skltp.agp.version>
+  </properties>
+
   <dependencies>
     <!-- dependencies to the integration component that contains the services to stub -->
     <dependency>
@@ -39,12 +43,12 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <dependency>
       <groupId>se.skltp.agp</groupId>
       <artifactId>agp-core</artifactId>
-      <version>1.2.3</version>
+      <version>${skltp.agp.version}</version>
     </dependency>
     <dependency>
       <groupId>se.skltp.agp</groupId>
       <artifactId>agp-test-common</artifactId>
-      <version>1.2.3</version>
+      <version>${skltp.agp.version}</version>
     </dependency>
   </dependencies>
 
@@ -75,7 +79,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
         <artifactId>maven-mule-plugin</artifactId>
         <extensions>true</extensions>
         <configuration>
-        
+
           <!-- Include mule-dependencies that doesn't come with Mule 3.x otherwise we can't install to a vanilla Mule 3.x installation -->
           <inclusions>
             <inclusion>
@@ -87,7 +91,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
               <artifactId>devkit</artifactId>
             </inclusion>
           </inclusions>
-          
+
           <exclusions>
             <!-- xercesImpl is endorsed in MULE_HOME/lib/endorsed, see issue 274 -->
             <exclusion>
@@ -118,7 +122,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
               <groupId>org.safehaus.jug</groupId>
               <artifactId>jug.osgi</artifactId>
             </exclusion>
- 
+
             <!-- activemq needs to be added manually to MULE_HOME/lib/user if required, see issue 283 -->
             <exclusion>
               <groupId>org.apache.activemq</groupId>
@@ -159,8 +163,8 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <profiles>
     <profile>
       <id>muleServer</id>
-      <!-- Start mule server with the command 
-           mvn -PmuleServer or 
+      <!-- Start mule server with the command
+           mvn -PmuleServer or
            mvn -PmuleServer -Dexec.args="${artifaceId}-config.xml"
            if you want to override the default config-file -->
       <build>

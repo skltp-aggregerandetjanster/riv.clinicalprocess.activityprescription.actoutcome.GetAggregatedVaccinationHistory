@@ -52,7 +52,7 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
     private static final String DEFAULT_SERVICE_ADDRESS = GetAggregatedVaccinationHistoryMuleServer.getAddress("SERVICE_INBOUND_URL");
 
     protected String getConfigResources() {
-        return "soitoolkit-mule-jms-connector-activemq-embedded.xml,"
+        return    "soitoolkit-mule-jms-connector-activemq-embedded.xml,"
                 + "GetAggregatedVaccinationHistory-common.xml,"
                 +
                 // Only load GetAggregatedVaccinationHistory-common.xml, it will
@@ -61,8 +61,9 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
                 // agp-core.jar
                 // "aggregating-services-common.xml," +
                 // "aggregating-service.xml," +
-                "teststub-services/engagemangsindex-teststub-service.xml," + "teststub-services/service-producer-teststub-service.xml,"
-                + "teststub-services/tak-teststub-service.xml";
+                  "teststub-services/engagemangsindex-teststub-service.xml," 
+                + "teststub-services/service-producer-teststub-service.xml,"
+                + "teststub-non-default-services/tak-teststub-service.xml";
     }
 
     @Before
@@ -137,7 +138,7 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
     }
 
     /**
-     * Perform a test that is expected to casue the source system to fail with its processing
+     * Perform a test that is expected to cause the source system to fail with its processing
      */
     @Test
     public void test_fault_invalidInput() throws Exception {
