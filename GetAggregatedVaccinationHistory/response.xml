@@ -1,0 +1,191 @@
+<ns2:GetVaccinationHistoryResponse
+  xmlns:ns2="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2"
+  xmlns="urn:riv:clinicalprocess:activityprescription:actoutcome:2"
+  xmlns:ns3="urn:riv:interoperability:headers:1">
+  <ns2:vaccinationMedicalRecord>
+    <vaccinationMedicalRecordHeader>
+      <documentId>370c7eb3-8260-4b08-84a6-3ee093433a3f</documentId>
+      <sourceSystemHSAId>HSA-ID-4</sourceSystemHSAId>
+      <documentTitle>TEST-Document-Title</documentTitle>
+      <documentTime>20150609010508</documentTime>
+      <patientId>
+        <id>121212121212</id>
+        <type>1.2.752.129.2.1.3.1</type>
+      </patientId>
+      <accountableHealthcareProfessional>
+        <authorTime>20150609010508</authorTime>
+      </accountableHealthcareProfessional>
+      <legalAuthenticator>
+        <signatureTime>20150609010508</signatureTime>
+        <legalAuthenticatorHSAId>TEST-HSAId</legalAuthenticatorHSAId>
+        <legalAuthenticatorName>Test Testsson</legalAuthenticatorName>
+      </legalAuthenticator>
+      <approvedForPatient>true</approvedForPatient>
+      <careContactId>TEST-Contact-1234</careContactId>
+      <nullified>false</nullified>
+      <nullifiedReason>false</nullifiedReason>
+    </vaccinationMedicalRecordHeader>
+    <vaccinationMedicalRecordBody>
+      <registrationRecord>
+        <careGiverOrg>
+          <orgUnitHSAId>TEST-HSAId-1234</orgUnitHSAId>
+          <orgUnitName>Testhuset</orgUnitName>
+          <orgUnitTelecom>00-0000000</orgUnitTelecom>
+          <orgUnitEmail>test@test.se</orgUnitEmail>
+          <orgUnitAddress>Testvagen 3</orgUnitAddress>
+          <orgUnitLocation>Testby</orgUnitLocation>
+        </careGiverOrg>
+        <careGiverContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </careGiverContact>
+        <sourceSystemName>Take off</sourceSystemName>
+        <sourceSystemContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </sourceSystemContact>
+        <date>20150609</date>
+        <patientPostalCode>446 32</patientPostalCode>
+        <vaccinationUnstructuredNote>Unstructured note
+        </vaccinationUnstructuredNote>
+      </registrationRecord>
+      <additionalPatientInformation>
+        <dateOfBirth>19121212</dateOfBirth>
+        <gender>
+          <code>0</code>
+          <codeSystem>1.2.752.129.2.1.3.1</codeSystem>
+        </gender>
+      </additionalPatientInformation>
+    </vaccinationMedicalRecordBody>
+  </ns2:vaccinationMedicalRecord>
+  <ns2:vaccinationMedicalRecord>
+    <vaccinationMedicalRecordHeader>
+      <documentId>20724831-101c-488b-934e-af2f3ba22b62</documentId>
+      <sourceSystemHSAId>HSA-ID-6</sourceSystemHSAId>
+      <documentTitle>TEST-Document-Title</documentTitle>
+      <documentTime>20150609010508</documentTime>
+      <patientId>
+        <id>121212121212</id>
+        <type>1.2.752.129.2.1.3.1</type>
+      </patientId>
+      <accountableHealthcareProfessional>
+        <authorTime>20150609010508</authorTime>
+      </accountableHealthcareProfessional>
+      <legalAuthenticator>
+        <signatureTime>20150609010508</signatureTime>
+        <legalAuthenticatorHSAId>TEST-HSAId</legalAuthenticatorHSAId>
+        <legalAuthenticatorName>Test Testsson</legalAuthenticatorName>
+      </legalAuthenticator>
+      <approvedForPatient>true</approvedForPatient>
+      <careContactId>TEST-Contact-1234</careContactId>
+      <nullified>false</nullified>
+      <nullifiedReason>false</nullifiedReason>
+    </vaccinationMedicalRecordHeader>
+    <vaccinationMedicalRecordBody>
+      <registrationRecord>
+        <careGiverOrg>
+          <orgUnitHSAId>TEST-HSAId-1234</orgUnitHSAId>
+          <orgUnitName>Testhuset</orgUnitName>
+          <orgUnitTelecom>00-0000000</orgUnitTelecom>
+          <orgUnitEmail>test@test.se</orgUnitEmail>
+          <orgUnitAddress>Testvagen 3</orgUnitAddress>
+          <orgUnitLocation>Testby</orgUnitLocation>
+        </careGiverOrg>
+        <careGiverContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </careGiverContact>
+        <sourceSystemName>Take off</sourceSystemName>
+        <sourceSystemContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </sourceSystemContact>
+        <date>20150609</date>
+        <patientPostalCode>446 32</patientPostalCode>
+        <vaccinationUnstructuredNote>Unstructured note
+        </vaccinationUnstructuredNote>
+      </registrationRecord>
+      <additionalPatientInformation>
+        <dateOfBirth>19121212</dateOfBirth>
+        <gender>
+          <code>0</code>
+          <codeSystem>1.2.752.129.2.1.3.1</codeSystem>
+        </gender>
+      </additionalPatientInformation>
+    </vaccinationMedicalRecordBody>
+  </ns2:vaccinationMedicalRecord>
+  <ns2:vaccinationMedicalRecord>
+    <vaccinationMedicalRecordHeader>
+      <documentId>028464d6-2b0c-49f0-a87d-3a0cf6255bdf</documentId>
+      <sourceSystemHSAId>HSA-ID-5</sourceSystemHSAId>
+      <documentTitle>TEST-Document-Title</documentTitle>
+      <documentTime>20150609010508</documentTime>
+      <patientId>
+        <id>121212121212</id>
+        <type>1.2.752.129.2.1.3.1</type>
+      </patientId>
+      <accountableHealthcareProfessional>
+        <authorTime>20150609010508</authorTime>
+      </accountableHealthcareProfessional>
+      <legalAuthenticator>
+        <signatureTime>20150609010508</signatureTime>
+        <legalAuthenticatorHSAId>TEST-HSAId</legalAuthenticatorHSAId>
+        <legalAuthenticatorName>Test Testsson</legalAuthenticatorName>
+      </legalAuthenticator>
+      <approvedForPatient>true</approvedForPatient>
+      <careContactId>TEST-Contact-1234</careContactId>
+      <nullified>false</nullified>
+      <nullifiedReason>false</nullifiedReason>
+    </vaccinationMedicalRecordHeader>
+    <vaccinationMedicalRecordBody>
+      <registrationRecord>
+        <careGiverOrg>
+          <orgUnitHSAId>TEST-HSAId-1234</orgUnitHSAId>
+          <orgUnitName>Testhuset</orgUnitName>
+          <orgUnitTelecom>00-0000000</orgUnitTelecom>
+          <orgUnitEmail>test@test.se</orgUnitEmail>
+          <orgUnitAddress>Testvagen 3</orgUnitAddress>
+          <orgUnitLocation>Testby</orgUnitLocation>
+        </careGiverOrg>
+        <careGiverContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </careGiverContact>
+        <sourceSystemName>Take off</sourceSystemName>
+        <sourceSystemContact>
+          <hsaid>TEST-HSAId-1234</hsaid>
+          <personName>Test Testsson</personName>
+          <personEmail>test@test.se</personEmail>
+          <personTelecom>00-0000000</personTelecom>
+          <personAddress>Testvagen 2</personAddress>
+        </sourceSystemContact>
+        <date>20150609</date>
+        <patientPostalCode>446 32</patientPostalCode>
+        <vaccinationUnstructuredNote>Unstructured note
+        </vaccinationUnstructuredNote>
+      </registrationRecord>
+      <additionalPatientInformation>
+        <dateOfBirth>19121212</dateOfBirth>
+        <gender>
+          <code>0</code>
+          <codeSystem>1.2.752.129.2.1.3.1</codeSystem>
+        </gender>
+      </additionalPatientInformation>
+    </vaccinationMedicalRecordBody>
+  </ns2:vaccinationMedicalRecord>
+</ns2:GetVaccinationHistoryResponse>
