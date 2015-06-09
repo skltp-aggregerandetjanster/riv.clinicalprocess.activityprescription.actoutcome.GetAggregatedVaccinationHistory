@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule 
+<mule
 	xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:spring="http://www.springframework.org/schema/beans"
@@ -11,7 +11,7 @@
     <spring:beans>
       <!-- Load all resources needed by the core artifact -->
       <spring:import resource="classpath:aggregating-services-common.xml" />
-      <!-- 3. Replacement for org.springframework.beans.factory.config.PropertyPlaceholderConfigurer 
+      <!-- 3. Replacement for org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
 			that supports decrypting encrypted property values -->
 		<spring:bean
 			class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer"
@@ -29,7 +29,8 @@
 		</spring:bean>
       <!-- Load all teststub services -->
       <spring:import resource="classpath:teststub-services/*-teststub-service.xml"/>
-            
+			<spring:import resource="classpath:teststub-non-default-services/tak-teststub-service.xml" />
+
     </spring:beans>
 
 </mule>

@@ -61,8 +61,9 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
                 // agp-core.jar
                 // "aggregating-services-common.xml," +
                 // "aggregating-service.xml," +
-                "teststub-services/engagemangsindex-teststub-service.xml," + "teststub-services/service-producer-teststub-service.xml,"
-                + "teststub-services/tak-teststub-service.xml";
+                "teststub-services/engagemangsindex-teststub-service.xml,"
+                + "teststub-services/service-producer-teststub-service.xml,"
+                + "teststub-non-default-services/tak-teststub-service.xml";
     }
 
     @Before
@@ -117,17 +118,17 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
     }
 
     /**
-     * Perform a test that is expected to return three hit with data 
+     * Perform a test that is expected to return three hit with data
      * from two source systems and one source system that causes a timeout.
      */
     @Test
     public void test_ok_many_hits_with_partial_timeout() {
 
         // Setup call and verify the response, expect one booking from source #1, two from source #2 and a timeout from source #3
-        List<ProcessingStatusRecordType> statusList 
-           = doTest(TEST_RR_ID_MANY_HITS, 3, 
-                    new ExpectedTestData(TEST_BO_ID_MANY_HITS_1, TEST_LOGICAL_ADDRESS_1), 
-                    new ExpectedTestData(TEST_BO_ID_MANY_HITS_2, TEST_LOGICAL_ADDRESS_2), 
+        List<ProcessingStatusRecordType> statusList
+           = doTest(TEST_RR_ID_MANY_HITS, 3,
+                    new ExpectedTestData(TEST_BO_ID_MANY_HITS_1, TEST_LOGICAL_ADDRESS_1),
+                    new ExpectedTestData(TEST_BO_ID_MANY_HITS_2, TEST_LOGICAL_ADDRESS_2),
                     new ExpectedTestData(TEST_BO_ID_MANY_HITS_3, TEST_LOGICAL_ADDRESS_2));
 
         // Verify the Processing Status, expect ok from source system #1 and #2 but a timeout from #3
@@ -171,7 +172,7 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
     private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId,
             int expectedProcessingStatusSize, ExpectedTestData... testData) {
         // Setup and perform the call to the web service
-        GetAggregatedVaccinationHistoryTestConsumer consumer 
+        GetAggregatedVaccinationHistoryTestConsumer consumer
            = new GetAggregatedVaccinationHistoryTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId, originalConsumerHsaId);
         Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
@@ -197,7 +198,7 @@ public class GetAggregatedVaccinationHistoryIntegrationTest extends AbstractAggr
         // Verify that correct "x-rivta-original-serviceconsumer-hsaid" http header was passed to the engagement index
         assertEquals(SAMPLE_ORIGINAL_CONSUMER_HSAID, EngagemangsindexTestProducerLogger.getLastOriginalConsumer());
 
-        // Verify that correct "x-vp-sender-id" and "x-rivta-original-serviceconsumer-hsaid" http header 
+        // Verify that correct "x-vp-sender-id" and "x-rivta-original-serviceconsumer-hsaid" http header
         // were passed to the service producer, given that a service producer was called
         if (expectedProcessingStatusSize > 0) {
             assertEquals(SAMPLE_SENDER_ID, TestProducerLogger.getLastSenderId());
