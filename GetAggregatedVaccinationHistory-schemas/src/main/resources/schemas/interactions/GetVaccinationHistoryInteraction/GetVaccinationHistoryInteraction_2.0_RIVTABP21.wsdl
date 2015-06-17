@@ -31,7 +31,7 @@
 			 Tjänstedomän: clinicalprocess:activityprescription:actoutcome
 			 Tjänsteinteraktionstyp: Fråga-Svar
 			 WS-profil: RIVTABP21
-			 Förvaltas av: Sveriges Kommuner och Landsting
+			 Förvaltas av: Inera
 			 </xs:documentation>
   </xs:annotation>
   <wsdl:types>
