@@ -31,6 +31,7 @@ public class ResponseListFactoryImpl implements ResponseListFactory {
                   aggregatedResponse.getVaccinationMedicalRecord().size(),
                   queryObject.getFindContent().getRegisteredResidentIdentification());
         aggregatedResponse.setResult(new ResultType());
+        aggregatedResponse.getResult().setLogId("NA");
         aggregatedResponse.getResult().setResultCode(ResultCodeEnum.INFO);
         // Since the class GetAlertInformationResponseType doesn't have an @XmlRootElement annotation
         // we need to use the ObjectFactory to add it.
