@@ -24,8 +24,8 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
         String serviceAddress = GetAggregatedVaccinationHistoryMuleServer.getAddress("SERVICE_INBOUND_URL");
         String personnummer = TEST_RR_ID_ONE_HIT;
 
-        GetAggregatedVaccinationHistoryTestConsumer consumer 
-          = new GetAggregatedVaccinationHistoryTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID);
+        GetAggregatedVaccinationHistoryTestConsumer consumer
+          = new GetAggregatedVaccinationHistoryTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID);
         Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
 
@@ -34,9 +34,9 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
         log.info("Returned #records = {}", responseHolder.value.getVaccinationMedicalRecord().size());
     }
 
-    public GetAggregatedVaccinationHistoryTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId) {
+    public GetAggregatedVaccinationHistoryTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId, String correlationId) {
         // Setup a web service proxy for communication using HTTPS with mutual authentication
-        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId);
+        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId, correlationId);
     }
 
     public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder,
@@ -48,9 +48,9 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
         personIdType.setId(registeredResidentId);
         personIdType.setType("1.2.752.129.2.1.3.1");
         request.setPatientId(personIdType);
-        
+
         final GetVaccinationHistoryResponseType response = _service.getVaccinationHistory(logicalAddress, request);
-        
+
         responseHolder.value = response;
         processingStatusHolder.value = SoapHeaderCxfInterceptor.getLastFoundProcessingStatus();
     }
