@@ -25,7 +25,7 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
         String personnummer = TEST_RR_ID_ONE_HIT;
 
         GetAggregatedVaccinationHistoryTestConsumer consumer 
-          = new GetAggregatedVaccinationHistoryTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID);
+          = new GetAggregatedVaccinationHistoryTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID);
         Holder<GetVaccinationHistoryResponseType> responseHolder = new Holder<GetVaccinationHistoryResponseType>();
         Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
 
@@ -34,9 +34,9 @@ public class GetAggregatedVaccinationHistoryTestConsumer extends AbstractTestCon
         log.info("Returned #records = {}", responseHolder.value.getVaccinationMedicalRecord().size());
     }
 
-    public GetAggregatedVaccinationHistoryTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId) {
+    public GetAggregatedVaccinationHistoryTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId, String correlationId) {
         // Setup a web service proxy for communication using HTTPS with mutual authentication
-        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId);
+        super(GetVaccinationHistoryResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId, correlationId);
     }
 
     public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder,
