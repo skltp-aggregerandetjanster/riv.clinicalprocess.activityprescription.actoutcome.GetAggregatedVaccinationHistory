@@ -18,7 +18,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
   <artifactId>GetAggregatedVaccinationHistory-parent</artifactId>
-  <version>1.1.3-RC1-SNAPSHOT</version>
+  <version>1.1.3</version>
   <packaging>pom</packaging>
   <name>GetAggregatedVaccinationHistory-parent</name>
 
@@ -30,7 +30,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <url>http://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory</url>
     <connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory.git</connection>
     <developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v1.1.3</tag>
   </scm>
 
   <modules>
