@@ -20,10 +20,8 @@
 			<spring:property name="ignoreResourceNotFound" value="true" />
 			<spring:property name="locations">
 				<spring:list>
-					<spring:value>classpath:GetAggregatedVaccinationHistory-v1-config.properties
-					</spring:value>
-					<spring:value>classpath:GetAggregatedVaccinationHistory-v1-config-override.properties
-					</spring:value>
+					<spring:value>classpath:GetAggregatedVaccinationHistory-v1-config.properties</spring:value>
+					<spring:value>classpath:GetAggregatedVaccinationHistory-v1-config-override.properties</spring:value>
 				</spring:list>
 			</spring:property>
 		</spring:bean>
