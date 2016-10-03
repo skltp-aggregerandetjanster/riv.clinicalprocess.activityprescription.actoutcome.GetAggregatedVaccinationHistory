@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
 import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v1.GetVaccinationHistoryType;
-import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
 import se.skltp.agp.service.api.QueryObject;
@@ -24,12 +23,6 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestListFactoryImpl.class);
     private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
-
-    // contains HSAid for a specific namespace
-    private TakCacheBean takCache;
-    public void setTakCache(TakCacheBean takCache) {
-        this.takCache = takCache;
-    }
 
     /**
      * Filtrera svarsposter från i EI (ei-engagement) baserat parametrar i GetVaccinationHistory requestet (req). 
@@ -59,10 +52,8 @@ public class RequestListFactoryImpl implements RequestListFactory {
             // discard engagements that are not the same as the request HSAid (if specified)
             if (isPartOf(reqCareUnit, inEng.getLogicalAddress())) {
                 // discard engagements with HSAid that are not in takCache for specified namespace
-                if (takCache.contains(inEng.getLogicalAddress())) {
-                    log.debug("Added source system: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
-                    addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
-                }
+				log.debug("Added source system: {} for PDL unit: {}", inEng.getSourceSystem(), inEng.getLogicalAddress());
+				addPdlUnitToSourceSystem(sourceSystem_pdlUnitList_map, inEng.getSourceSystem(), inEng.getLogicalAddress());
             }
         }
 
