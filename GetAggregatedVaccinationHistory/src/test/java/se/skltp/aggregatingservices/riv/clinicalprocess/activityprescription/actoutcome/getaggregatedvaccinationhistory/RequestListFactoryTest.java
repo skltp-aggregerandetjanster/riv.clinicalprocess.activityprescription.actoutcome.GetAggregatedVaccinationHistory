@@ -13,7 +13,6 @@ import org.mockito.Mockito;
 
 import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistoryresponder.v2.GetVaccinationHistoryType;
 import riv.clinicalprocess.activityprescription.actoutcome.v2.PersonIdType;
-import se.skltp.agp.cache.TakCacheBean;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
 import se.skltp.agp.service.api.QueryObject;
@@ -45,17 +44,12 @@ public class RequestListFactoryTest {
         QueryObject invalidQo = Mockito.mock(QueryObject.class);
         Mockito.when(invalidQo.getExtraArg()).thenReturn(invalidRequest);
 
-        TakCacheBean takCache = Mockito.mock(TakCacheBean.class);
-        Mockito.when(takCache.contains(Mockito.anyString())).thenReturn(true);
-
         final FindContentResponseType findContent = new FindContentResponseType();
         final EngagementType eng = new EngagementType();
         eng.setLogicalAddress(SOURCE_SYSTEM_HSAID);
         eng.setSourceSystem(SOURCE_SYSTEM_HSAID);
         eng.setRegisteredResidentIdentification(SUBJECT_OF_CARE);
         findContent.getEngagement().add(eng);
-
-        testObject.setTakCache(takCache);
 
         List<Object[]> validRequestList = testObject.createRequestList(validQo, findContent);
         List<Object[]> invalidRequestList = testObject.createRequestList(invalidQo, findContent);
