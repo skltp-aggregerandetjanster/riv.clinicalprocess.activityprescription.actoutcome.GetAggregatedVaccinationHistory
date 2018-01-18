@@ -46,7 +46,7 @@ public class ResponseListFactoryImpl implements ResponseListFactory {
             final GetVaccinationHistoryResponseType response = (GetVaccinationHistoryResponseType) object;
             aggregatedResponse.getVaccinationMedicalRecord().addAll(response.getVaccinationMedicalRecord());
         }
-        log.info("Returning {} aggregated alert informations for subject of care id {}", 
+        log.info("Returning {} aggregated vaccination history for subject of care id {}", 
                   aggregatedResponse.getVaccinationMedicalRecord().size(),
                   queryObject.getFindContent().getRegisteredResidentIdentification());
         aggregatedResponse.setResult(new ResultType());
