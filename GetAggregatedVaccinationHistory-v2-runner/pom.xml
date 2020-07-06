@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>GetAggregatedVaccinationHistory-v3-runner</artifactId>
+  <artifactId>GetAggregatedVaccinationHistory-v2-runner</artifactId>
 
   <dependencies>
     <dependency>
@@ -18,7 +18,7 @@
 
     <dependency>
       <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome</groupId>
-      <artifactId>GetAggregatedVaccinationHistory-v3-main</artifactId>
+      <artifactId>GetAggregatedVaccinationHistory-v2-main</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

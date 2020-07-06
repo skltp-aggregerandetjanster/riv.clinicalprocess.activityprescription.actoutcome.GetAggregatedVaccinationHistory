@@ -9,8 +9,8 @@
   <dependencySets>
     <dependencySet>
       <includes>
-        <include>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome:GetAggregatedVaccinationHistory-v3-main:jar</include>
-        <include>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome:GetAggregatedVaccinationHistory-v3-schemas:jar</include>
+        <include>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome:GetAggregatedVaccinationHistory-v2-main:jar</include>
+        <include>se.skltp.aggregatingservices.riv.clinicalprocess.activityprescription.actoutcome:GetAggregatedVaccinationHistory-v2-schemas:jar</include>
       </includes>
       <useProjectArtifact>true</useProjectArtifact>
       <unpack>true</unpack>
