@@ -9,7 +9,7 @@ import riv.clinicalprocess.activityprescription.actoutcome.v2.ResultType;
 import se.skltp.aggregatingservices.AgServiceFactoryBase;
 
 @Log4j2
-public class GAVHAgpServiceFactoryImpl extends
+public class GAVH2AgpServiceFactoryImpl extends
     AgServiceFactoryBase<GetVaccinationHistoryType, GetVaccinationHistoryResponseType> {
 
   @Override

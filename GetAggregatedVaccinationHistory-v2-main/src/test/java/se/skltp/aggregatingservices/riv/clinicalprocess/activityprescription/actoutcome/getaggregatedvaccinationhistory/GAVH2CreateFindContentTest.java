@@ -7,22 +7,15 @@ import riv.clinicalprocess.activityprescription.actoutcome.getvaccinationhistory
 import se.skltp.aggregatingservices.api.AgpServiceFactory;
 import se.skltp.aggregatingservices.tests.CreateFindContentTest;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-public class GAVHCreateRequestListTest extends CreateFindContentTest {
 
-  private static GAVHAgpServiceConfiguration configuration = new GAVHAgpServiceConfiguration();
-  private static AgpServiceFactory<GetVaccinationHistoryResponseType> agpServiceFactory = new GAVHAgpServiceFactoryImpl();
+@RunWith(SpringJUnit4ClassRunner.class)
+public class GAVH2CreateFindContentTest extends CreateFindContentTest {
+
+  private static GAVH2AgpServiceConfiguration configuration = new GAVH2AgpServiceConfiguration();
+  private static AgpServiceFactory<GetVaccinationHistoryResponseType> agpServiceFactory = new GAVH2AgpServiceFactoryImpl();
   private static ServiceTestDataGenerator testDataGenerator = new ServiceTestDataGenerator();
 
-
-  public GAVHCreateRequestListTest() {
+  public GAVH2CreateFindContentTest() {
     super(testDataGenerator, agpServiceFactory, configuration);
-  }
-
-  @BeforeClass
-  public static void before() {
-    configuration = new GAVHAgpServiceConfiguration();
-    agpServiceFactory = new GAVHAgpServiceFactoryImpl();
-    agpServiceFactory.setAgpServiceConfiguration(configuration);
   }
 }

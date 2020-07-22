@@ -8,13 +8,13 @@ import se.skltp.aggregatingservices.tests.CreateAggregatedResponseTest;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class GAVHCreateAggregatedResponseTest extends CreateAggregatedResponseTest {
+public class GAVH2CreateAggregatedResponseTest extends CreateAggregatedResponseTest {
 
-  private static GAVHAgpServiceConfiguration configuration = new GAVHAgpServiceConfiguration();
-  private static AgpServiceFactory<GetVaccinationHistoryResponseType> agpServiceFactory = new GAVHAgpServiceFactoryImpl();
+  private static GAVH2AgpServiceConfiguration configuration = new GAVH2AgpServiceConfiguration();
+  private static AgpServiceFactory<GetVaccinationHistoryResponseType> agpServiceFactory = new GAVH2AgpServiceFactoryImpl();
   private static ServiceTestDataGenerator testDataGenerator = new ServiceTestDataGenerator();
 
-  public GAVHCreateAggregatedResponseTest() {
+  public GAVH2CreateAggregatedResponseTest() {
     super(testDataGenerator, agpServiceFactory, configuration);
   }
 
