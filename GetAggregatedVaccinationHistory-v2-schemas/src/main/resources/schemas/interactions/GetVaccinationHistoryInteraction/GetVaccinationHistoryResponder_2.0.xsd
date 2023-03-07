@@ -21,7 +21,7 @@
   xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2"
   xmlns:core="urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2"
-  elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
   <xs:import
     schemaLocation="../../core_components/clinicalprocess_activityprescription_actoutcome_2.0.xsd"
     namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2"/>

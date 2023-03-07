@@ -20,10 +20,15 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   xmlns:codes="urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2"
+  xmlns:m1="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1"
   targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+ 
   <xs:import schemaLocation="./clinicalprocess_activityprescription_actoutcome_enum_2.0.xsd"
     namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2"/>
+  <xs:import schemaLocation="./clinicalprocess_activityprescription_actoutcome_2.1_ext.xsd"
+    namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1"/>
+
   <xs:complexType name="VaccinationMedicalRecordType">
     <xs:sequence>
       <xs:element name="vaccinationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"
@@ -178,7 +183,7 @@
       <xs:element name="approvedForPatient" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
       <xs:element name="careContactId" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="nullified" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="nullifiedReason" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="nullifiedReason" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -255,62 +260,9 @@
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="MedicationMedicalRecordType">
-    <xs:annotation>
-      <xs:documentation> </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="medicationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"/>
-      <xs:element name="medicationMedicalRecordBody" type="tns:MedicationMedicalRecordBodyType"
-        minOccurs="1"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="MedicationMedicalRecordBodyType">
-    <xs:annotation>
-      <xs:documentation> </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="medicationPrescription" type="tns:MedicationPrescriptionType" maxOccurs="1"
-        minOccurs="1"/>
-      <xs:element name="additionalPatientInformation" type="tns:AdditionalPatientInformationType"
-        minOccurs="0"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="MedicationPrescriptionType">
-    <xs:annotation>
-      <xs:documentation> </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="prescriptionId" type="tns:IIType"/>
-      <xs:element name="typeOfPrescription" type="codes:TypeOfPrescriptionEnum"/>
-      <xs:element name="prescriptionStatus" type="codes:PrescriptionStatusEnum" minOccurs="1"/>
-      <xs:element name="prescriptionNote" type="xs:string" minOccurs="0"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="principalPrescriptionReason"
-        type="tns:PrescriptionReasonType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalPrescriptionReason"
-        type="tns:PrescriptionReasonType"/>
-      <xs:element name="evaluationTime" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="treatmentPurpose" type="xs:string" minOccurs="0"/>
-      <xs:element name="prescriptionChainId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="precedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="succeedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="prescriber" type="tns:HealthcareProfessionalType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="evaluator" type="tns:HealthcareProfessionalType"/>
-      <xs:element name="startOfFirstTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="startOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="endOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="endOfTreatmentReason" type="tns:CVType" minOccurs="0"/>
-      <xs:element name="selfMedication" type="xs:boolean"/>
-      <xs:element name="drug" type="tns:DrugChoiceType" minOccurs="0"/>
-      <xs:element name="dispensationAuthorization" type="tns:DispensationAuthorizationType"
-        minOccurs="0"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="administration"
-        type="tns:AdministrationType"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
+
+
+
   <xs:complexType name="PrescriptionReasonType">
     <xs:annotation>
       <xs:documentation> </xs:documentation>
@@ -446,8 +398,6 @@
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
-
   <xs:complexType name="FrequencyDosageType">
     <xs:annotation>
       <xs:documentation> </xs:documentation>
@@ -625,15 +575,9 @@
 
   <xs:complexType name="TimePeriodType">
     <xs:annotation>
-      <xs:documentation>
-        Används för att specificera ett datumintervall
-        med hjälp av start- och slutdatum.
-        
-        start:
-        Startdatum på formatet YYYYMMDDhhmmss
-        end:
-        Slutdatum på formatet YYYYMMDDhhmmss
-      </xs:documentation>
+      <xs:documentation> Används för att specificera ett datumintervall med hjälp av start- och
+        slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet
+        YYYYMMDDhhmmss </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="start" type="tns:TimeStampType" minOccurs="0"/>
@@ -651,5 +595,63 @@
       <xs:element name="isMaximumTreatmentTime" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
+  
+  <xs:complexType name="MedicationMedicalRecordType">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="medicationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"/>
+      <xs:element name="medicationMedicalRecordBody" type="tns:MedicationMedicalRecordBodyType"
+        minOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedicationMedicalRecordBodyType">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="medicationPrescription" type="tns:MedicationPrescriptionType" maxOccurs="1"
+        minOccurs="1"/>
+      <xs:element name="additionalPatientInformation" type="tns:AdditionalPatientInformationType"
+        minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedicationPrescriptionType">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="prescriptionId" type="tns:IIType"/>
+      <xs:element name="typeOfPrescription" type="codes:TypeOfPrescriptionEnum"/>
+      <xs:element name="prescriptionStatus" type="codes:PrescriptionStatusEnum" minOccurs="1"/>
+      <xs:element name="prescriptionNote" type="xs:string" minOccurs="0"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="principalPrescriptionReason"
+        type="tns:PrescriptionReasonType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalPrescriptionReason"
+        type="tns:PrescriptionReasonType"/>
+      <xs:element name="evaluationTime" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="treatmentPurpose" type="xs:string" minOccurs="0"/>
+      <xs:element name="prescriptionChainId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="precedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="succeedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="prescriber" type="tns:HealthcareProfessionalType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="evaluator" type="tns:HealthcareProfessionalType"/>
+      <xs:element name="startOfFirstTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="startOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="endOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="endOfTreatmentReason" type="tns:CVType" minOccurs="0"/>
+      <xs:element name="selfMedication" type="xs:boolean"/>
+      <xs:element name="drug" type="tns:DrugChoiceType" minOccurs="0"/>
+      <xs:element name="dispensationAuthorization" type="tns:DispensationAuthorizationType"
+        minOccurs="0"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="administration"
+        type="tns:AdministrationType"/>
+      <xs:element ref="m1:relation" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
 
 </xs:schema>
