@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project activeEnvironment="Default" name="GetAggregatedVaccinationHistory-v2" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" id="e26f2dbf-572b-48df-a942-e6fe0fdf18bb" xmlns:con="http://eviware.com/soapui/config"><con:description>https://test.esb.ntjp.se:443/vp/Update/1/rivtabp21
+<con:soapui-project activeEnvironment="Default" name="GetAggregatedVaccinationHistory-v2" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="e26f2dbf-572b-48df-a942-e6fe0fdf18bb" xmlns:con="http://eviware.com/soapui/config"><con:description>https://test.esb.ntjp.se:443/vp/Update/1/rivtabp21
 https://qa.esb.ntjp.se:443/vp/Update/1/rivtabp21
 
 https://test.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21
-https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21</con:description><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GetVaccinationHistoryResponderBinding" type="wsdl" bindingName="{urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21}GetVaccinationHistoryResponderBinding" soapVersion="1_1" anonymous="optional" definition="file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_2.0_RIVTABP21.wsdl" id="a29a3014-2921-4363-a0e9-fca90786b1d5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_2.0_RIVTABP21.wsdl"><con:part><con:url>file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryInteraction_2.0_RIVTABP21.wsdl</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/GetVaccinationHistory/2/rivtabp21</con:description><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GetVaccinationHistoryResponderBinding" type="wsdl" bindingName="{urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21}GetVaccinationHistoryResponderBinding" soapVersion="1_1" anonymous="optional" definition="C:/Users/bjopet/source/RIVCLI~2.GET/GETAGG~3/src/main/RESOUR~1/schemas/INTERA~1/GETVAC~1/GETVAC~1.WSD" id="a29a3014-2921-4363-a0e9-fca90786b1d5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/Users/bjopet/source/RIVCLI~2.GET/GETAGG~3/src/main/RESOUR~1/schemas/INTERA~1/GETVAC~1/GETVAC~1.WSD"><con:part><con:url>file:/C:/Users/bjopet/source/RIVCLI~2.GET/GETAGG~3/src/main/RESOUR~1/schemas/INTERA~1/GETVAC~1/GETVAC~1.WSD</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
  regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
@@ -20,16 +20,14 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
  specific language governing permissions and limitations
  under the License.-->
 <wsdl:definitions name="GetVaccinationHistoryInteraction" targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tjsr="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" xmlns:tjsi="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:2" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21" xmlns:itr="urn:riv:itintegration:registry:1">
-  <xs:annotation>
-    <xs:documentation>Tjänsteinteraktionens namn: GetVaccinationHistoryInteraction
+  <wsdl:documentation>Tjänsteinteraktionens namn: GetVaccinationHistoryInteraction
 			 Beskrivning: 
-			   Get vaccination history for a patient
+			   Returnerar ordinerade och/eller administrerade vaccinationer för en patient.
 			 Revisioner: 
 			 Tjänstedomän: clinicalprocess:activityprescription:actoutcome
 			 Tjänsteinteraktionstyp: Fråga-Svar
 			 WS-profil: RIVTABP21
-			 Förvaltas av: Sveriges Kommuner och Landsting</xs:documentation>
-  </xs:annotation>
+			 Förvaltas av: Inera</wsdl:documentation>
   <wsdl:types>
     <xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21">
       <xs:import schemaLocation="GetVaccinationHistoryResponder_2.0.xsd" namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2"/>
@@ -69,7 +67,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <soap:address location="http://tempuri.org"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/interactions/GetVaccinationHistoryInteraction/GetVaccinationHistoryResponder_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\bjopet\source\RIVCLI~2.GET\GETAGG~3\src\main\RESOUR~1\schemas\INTERA~1\GETVAC~1\GetVaccinationHistoryResponder_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
  regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
@@ -85,7 +83,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
  KIND, either express or implied. See the License for the
  specific language governing permissions and limitations
  under the License.-->
-<xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" xmlns:core="urn:riv:clinicalprocess:activityprescription:actoutcome:2">
+<xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2" xmlns:core="urn:riv:clinicalprocess:activityprescription:actoutcome:2">
   <xs:import schemaLocation="../../core_components/clinicalprocess_activityprescription_actoutcome_2.0.xsd" namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2"/>
   <xs:element name="GetVaccinationHistory" type="tns:GetVaccinationHistoryType"/>
   <xs:element name="GetVaccinationHistoryResponse" type="tns:GetVaccinationHistoryResponseType"/>
@@ -106,7 +104,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/core_components/clinicalprocess_activityprescription_actoutcome_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\bjopet\source\RIVCLI~2.GET\GETAGG~3\src\main\RESOUR~1\schemas\core_components\clinicalprocess_activityprescription_actoutcome_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
  regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
@@ -122,13 +120,13 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
  KIND, either express or implied. See the License for the
  specific language governing permissions and limitations
  under the License.-->
-<xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:2" xmlns:codes="urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2">
+<xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:2" xmlns:codes="urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2" xmlns:m1="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1">
   <xs:import schemaLocation="./clinicalprocess_activityprescription_actoutcome_enum_2.0.xsd" namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:enums:2"/>
+  <xs:import schemaLocation="./clinicalprocess_activityprescription_actoutcome_2.1_ext.xsd" namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1"/>
   <xs:complexType name="VaccinationMedicalRecordType">
     <xs:sequence>
       <xs:element name="vaccinationMedicalRecordHeader" type="tns:PatientSummaryHeaderType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="vaccinationMedicalRecordBody" type="tns:VaccinationMedicalRecordBodyType" minOccurs="1" maxOccurs="1"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="relation" type="tns:RelationType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -264,7 +262,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:element name="approvedForPatient" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
       <xs:element name="careContactId" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="nullified" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="nullifiedReason" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="nullifiedReason" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -320,16 +318,6 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="RelationType">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="code" type="tns:CVType"/>
-      <xs:element name="referredInformation" type="tns:ReferredInformationType" minOccurs="1"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="ReferredInformationType">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -337,7 +325,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
     <xs:sequence>
       <xs:element name="id" type="tns:IIType"/>
       <xs:element name="time" type="tns:TimeStampType" minOccurs="1"/>
-      <xs:element name="uri" type="xs:anyURI" minOccurs="1"/>
+      <xs:element name="type" type="xs:string" minOccurs="1"/>
       <xs:element name="informationOwner" type="tns:InformationOwnerType" minOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
@@ -348,56 +336,6 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
     </xs:annotation>
     <xs:sequence>
       <xs:element name="id" type="tns:IIType"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="MedicationMedicalRecordType">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="medicationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"/>
-      <xs:element name="medicationMedicalRecordBody" type="tns:MedicationMedicalRecordBodyType" minOccurs="1"/>
-      <xs:element name="relation" type="tns:RelationType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="MedicationMedicalRecordBodyType">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="medicationPrescription" type="tns:MedicationPrescriptionType" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="additionalPatientInformation" type="tns:AdditionalPatientInformationType" minOccurs="0"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="MedicationPrescriptionType">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="prescriptionId" type="tns:IIType"/>
-      <xs:element name="typeOfPrescription" type="codes:TypeOfPrescriptionEnum"/>
-      <xs:element name="prescriptionStatus" type="tns:CVType" minOccurs="1"/>
-      <xs:element name="prescriptionNote" type="xs:string" minOccurs="0"/>
-      <xs:element maxOccurs="unbounded" minOccurs="1" name="principalPrescriptionReason" type="tns:PrescriptionReasonType"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalPrescriptionReason" type="tns:PrescriptionReasonType"/>
-      <xs:element name="evaluationTime" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="treatmentPurpose" type="xs:string" minOccurs="0"/>
-      <xs:element name="prescriptionChainId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="precedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="succeedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
-      <xs:element name="prescriber" type="tns:HealthcareProfessionalType" minOccurs="0"/>
-      <xs:element minOccurs="0" name="evaluator" type="tns:HealthcareProfessionalType"/>
-      <xs:element name="startOfFirstTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="startOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="endOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
-      <xs:element name="endOfTreatmentReason" type="tns:CVType" minOccurs="0"/>
-      <xs:element name="selfMedication" type="xs:boolean"/>
-      <xs:element name="drug" type="tns:DrugChoiceType" minOccurs="0"/>
-      <xs:element name="dispensationAuthorization" type="tns:DispensationAuthorizationType" minOccurs="0"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="administration" type="tns:AdministrationType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -439,6 +377,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:element name="firstDispensationBefore" type="tns:DateType" minOccurs="0"/>
       <xs:element name="prescriptionSignatura" type="xs:string"/>
       <xs:element name="nonReplaceable" type="codes:NonReplaceableEnum" minOccurs="0"/>
+      <xs:element minOccurs="0" name="drug" type="tns:DrugChoiceType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -464,6 +403,9 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:element name="nplId" type="tns:CVType" minOccurs="1"/>
       <xs:element name="atcCode" type="tns:CVType" minOccurs="0"/>
       <xs:element name="routeOfAdministration" type="tns:CVType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="pharmaceuticalForm" type="xs:string"/>
+      <xs:element minOccurs="0" name="strength" type="xs:double"/>
+      <xs:element minOccurs="0" name="strengthUnit" type="xs:string"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -472,8 +414,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="lengthOfTreatment" type="tns:PQIntervalType" minOccurs="0"/>
-      <xs:element name="isMaximumTreatmentTime" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="lengthOfTreatment" type="tns:LengthOfTreatmentType" minOccurs="0"/>
       <xs:element name="dosageInstruction" type="xs:string" minOccurs="0"/>
       <xs:element name="unitDose" type="tns:CVType" minOccurs="0"/>
       <xs:element name="shortNotation" type="xs:string" minOccurs="0"/>
@@ -563,7 +504,7 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:element name="doseStep" type="tns:PQType" minOccurs="1"/>
       <xs:element name="timeStep" type="tns:PQType" minOccurs="1"/>
       <xs:element name="rampStart" type="tns:RampEndpointType"/>
-      <xs:element name="rampStart" type="tns:RampEndpointType"/>
+      <xs:element name="rampEnd" type="tns:RampEndpointType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -685,13 +626,9 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
   </xs:complexType>
   <xs:complexType name="TimePeriodType">
     <xs:annotation>
-      <xs:documentation>Används för att specificera ett datumintervall
-        med hjälp av start- och slutdatum.
-        
-        start:
-        Startdatum på formatet YYYYMMDDhhmmss
-        end:
-        Slutdatum på formatet YYYYMMDDhhmmss</xs:documentation>
+      <xs:documentation>Används för att specificera ett datumintervall med hjälp av start- och
+        slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet
+        YYYYMMDDhhmmss</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="start" type="tns:TimeStampType" minOccurs="0"/>
@@ -699,7 +636,65 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/core_components/clinicalprocess_activityprescription_actoutcome_enum_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+  <xs:complexType name="LengthOfTreatmentType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="treatmentInterval" type="tns:PQIntervalType"/>
+      <xs:element name="isMaximumTreatmentTime" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedicationMedicalRecordType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="medicationMedicalRecordHeader" type="tns:PatientSummaryHeaderType"/>
+      <xs:element name="medicationMedicalRecordBody" type="tns:MedicationMedicalRecordBodyType" minOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedicationMedicalRecordBodyType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="medicationPrescription" type="tns:MedicationPrescriptionType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="additionalPatientInformation" type="tns:AdditionalPatientInformationType" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MedicationPrescriptionType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="prescriptionId" type="tns:IIType"/>
+      <xs:element name="typeOfPrescription" type="codes:TypeOfPrescriptionEnum"/>
+      <xs:element name="prescriptionStatus" type="codes:PrescriptionStatusEnum" minOccurs="1"/>
+      <xs:element name="prescriptionNote" type="xs:string" minOccurs="0"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="principalPrescriptionReason" type="tns:PrescriptionReasonType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalPrescriptionReason" type="tns:PrescriptionReasonType"/>
+      <xs:element name="evaluationTime" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="treatmentPurpose" type="xs:string" minOccurs="0"/>
+      <xs:element name="prescriptionChainId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="precedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="succeedingPrescriptionId" type="tns:IIType" minOccurs="0"/>
+      <xs:element name="prescriber" type="tns:HealthcareProfessionalType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="evaluator" type="tns:HealthcareProfessionalType"/>
+      <xs:element name="startOfFirstTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="startOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="endOfTreatment" type="tns:TimeStampType" minOccurs="0"/>
+      <xs:element name="endOfTreatmentReason" type="tns:CVType" minOccurs="0"/>
+      <xs:element name="selfMedication" type="xs:boolean"/>
+      <xs:element name="drug" type="tns:DrugChoiceType" minOccurs="0"/>
+      <xs:element name="dispensationAuthorization" type="tns:DispensationAuthorizationType" minOccurs="0"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="administration" type="tns:AdministrationType"/>
+      <xs:element ref="m1:relation" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\bjopet\source\RIVCLI~2.GET\GETAGG~3\src\main\RESOUR~1\schemas\core_components\clinicalprocess_activityprescription_actoutcome_enum_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
  regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
@@ -726,9 +721,6 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
   <xs:simpleType name="ErrorCodeEnum">
     <xs:restriction base="xs:string">
       <xs:enumeration value="INVALID_REQUEST"/>
-      <xs:enumeration value="TRANSFORMATION_ERROR"/>
-      <xs:enumeration value="APPLICATION_ERROR"/>
-      <xs:enumeration value="TECHNICAL_ERROR"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="NonReplaceableEnum">
@@ -739,8 +731,8 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
   </xs:simpleType>
   <xs:simpleType name="TypeOfPrescriptionEnum">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Insättning"/>
-      <xs:enumeration value="Utsättning"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="U"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="PrescriptionStatusEnum">
@@ -749,7 +741,35 @@ https://qa.esb.ntjp.se:443/vp/clinicalprocess/activityprescription/actoutcome/Ge
       <xs:enumeration value="Inactive"/>
     </xs:restriction>
   </xs:simpleType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/Users/torbjorncla/Jobb/npo/aggtjanster/VaccinationHistory/develop/riv.clinicalprocess.activityprescription.actoutcome.GetAggregatedVaccinationHistory/GetAggregatedVaccinationHistory-schemas/src/main/resources/schemas/TD_CLINICALPROCESS_ACTIVITYPRESCRIPTION_ACTOUTCOME_2.0_RC1/core_components/itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:riv:itintegration:registry:1" elementFormDefault="qualified" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\bjopet\source\RIVCLI~2.GET\GETAGG~3\src\main\RESOUR~1\schemas\core_components\clinicalprocess_activityprescription_actoutcome_2.1_ext.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. Sveriges Kommuner och Landsting 
+	licenses this file to you under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License. You may 
+	obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License.-->
+<xs:schema targetNamespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:core="urn:riv:clinicalprocess:activityprescription:actoutcome:2" xmlns:tns="urn:riv:clinicalprocess:activityprescription:actoutcome:2.1">
+  <xs:import schemaLocation="clinicalprocess_activityprescription_actoutcome_2.0.xsd" namespace="urn:riv:clinicalprocess:activityprescription:actoutcome:2"/>
+  <xs:element name="relation" type="tns:RelationType"/>
+  <xs:complexType name="RelationType">
+    <xs:sequence>
+      <xs:element name="code" type="core:CVType" minOccurs="1"/>
+      <xs:element name="referredInformation" type="tns:ReferredInformationType" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferredInformationType">
+    <xs:sequence>
+      <xs:element name="id" type="core:IIType" minOccurs="1"/>
+      <xs:element name="type" type="core:CVType" minOccurs="1"/>
+      <xs:element name="informationOwner" type="core:InformationOwnerType" minOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\bjopet\source\RIVCLI~2.GET\GETAGG~3\src\main\RESOUR~1\schemas\core_components\itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:riv:itintegration:registry:1" elementFormDefault="qualified" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>Beskrivning: 	Grundl��ggande informationsobjekt f��r dom��nen itintegration:registry (adressering av tj��nster)
 			
