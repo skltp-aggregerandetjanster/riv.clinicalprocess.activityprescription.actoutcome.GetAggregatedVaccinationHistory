@@ -22,18 +22,16 @@
   xmlns:tjsi='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryInitiator:2'
   xmlns:tns='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21'
   targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
-  <xs:annotation>
-    <xs:documentation>
+    <wsdl:documentation>
 			 Tjänsteinteraktionens namn: GetVaccinationHistoryInteraction
 			 Beskrivning: 
-			   Get vaccination history for a patient
+			   Returnerar ordinerade och/eller administrerade vaccinationer för en patient.
 			 Revisioner: 
 			 Tjänstedomän: clinicalprocess:activityprescription:actoutcome
 			 Tjänsteinteraktionstyp: Fråga-Svar
 			 WS-profil: RIVTABP21
 			 Förvaltas av: Inera
-			 </xs:documentation>
-  </xs:annotation>
+			 </wsdl:documentation>
   <wsdl:types>
     <xs:schema targetNamespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistory:2:rivtabp21'>
       <xs:import schemaLocation='GetVaccinationHistoryResponder_2.0.xsd' namespace='urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2' />
